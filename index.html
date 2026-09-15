@@ -4184,26 +4184,16 @@ const screen = new THREE.Mesh(screenGeo, screenMat);
   const nav = document.getElementById('nav');
   const introFooter = document.getElementById('intro-footer');
   const hint = document.getElementById('scroll-hint');
-  const portfolioFrame = document.querySelector('#home iframe');
-  let homeInteractive = false;   // #home이 pointer-events:auto로 바뀌는 순간 딱 한 번만 iframe에 focus 주기 위한 플래그
-	let frameWheelDocument = null;
-	let frameWheelHandler = null;
+	  const portfolioFrame = document.querySelector('#home iframe');
+	  let homeInteractive = false;
+		let redirectedToHome = false;
   const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
   const backOut = (t) => { const c1 = 1.70158, c3 = c1 + 1, x = t - 1; return 1 + c3 * x * x * x + c1 * x * x; };   // 살짝 튕기는 등장(귀엽게)
 
-	function bindFrameWheel() {
-		const frameDocument = portfolioFrame.contentDocument;
-		if (!frameDocument || frameDocument === frameWheelDocument) return;
-		frameWheelHandler = e => {
-			if (!homeInteractive) return;
-			e.preventDefault();
-			portfolioFrame.contentWindow.scrollBy({ top: e.deltaY, left: 0, behavior: 'instant' });
-		};
-		frameDocument.addEventListener('wheel', frameWheelHandler, { passive: false });
-		frameWheelDocument = frameDocument;
-	}
-	portfolioFrame.addEventListener('load', bindFrameWheel);
-	bindFrameWheel();
+		function goHome(hash = '') {
+			const target = './Home/' + (hash ? `#${hash}` : '');
+			window.location.href = target;
+		}
 
   function applyTransition(p) {
     // 헤드셋 페이드아웃(0.80~0.92) — 카메라가 메시를 뚫는 걸 감춘다.
@@ -4226,11 +4216,14 @@ const screen = new THREE.Mesh(screenGeo, screenMat);
     home.style.pointerEvents = nowInteractive ? 'auto' : 'none';
     // ⚠️ pointer-events:none이던 iframe은 마우스를 올려도 wheel이 안 먹는다(클릭/포커스가 한 번 있어야 라우팅됨,
     // 실측 확인됨) — auto로 바뀌는 그 순간 자동으로 focus()를 줘서 바로 스크롤이 되게 함.
-		if (nowInteractive && !homeInteractive) {
-			lenis?.stop();
-			portfolioFrame.focus({ preventScroll: true });
-		}
-    homeInteractive = nowInteractive;
+			if (nowInteractive && !homeInteractive) {
+				lenis?.stop();
+				if (!redirectedToHome) {
+					redirectedToHome = true;
+					requestAnimationFrame(() => goHome());
+				}
+			}
+	    homeInteractive = nowInteractive;
 
     // 인트로 내비/카피: 스크롤 50%까지는 완전히 안 보이다가(opacity 0 그대로 유지) 50%를 넘는 순간부터
     // 위아래에서 살짝 튕기며 등장(처음부터 다 보이면 스크롤 안 하고 바로 클릭해버릴 수 있어서).
@@ -4266,18 +4259,8 @@ const screen = new THREE.Mesh(screenGeo, screenMat);
   // ── 5.6 인트로 내비 클릭 → 끝까지 스크롤(인트로 마무리) 후 포트폴리오 iframe 안의 해당 섹션으로 이동 ──
   (function () {
     function jumpFrameTo(id) {
-      const go = () => {
-        try {
-          const doc = portfolioFrame.contentWindow.document;
-          const target = doc.getElementById(id);
-          if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
-          else portfolioFrame.contentWindow.location.hash = id;
-        } catch (e) { /* cross-origin 등으로 접근 실패 시 조용히 무시 */ }
-      };
-      // 로컬 서버 기준 동일 출처라 즉시 접근 가능하지만, 아직 iframe 문서가 안 떴을 때 대비
-      if (portfolioFrame.contentDocument && portfolioFrame.contentDocument.readyState === 'complete') go();
-      else portfolioFrame.addEventListener('load', go, { once: true });
-    }
+	      goHome(id === 'home' ? '' : id);
+	    }
     document.querySelectorAll('#nav a').forEach(a => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
