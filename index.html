@@ -17,7 +17,7 @@
 <style>
   :root { color-scheme: light; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: auto; }
+  html { scroll-behavior: auto; overflow-y: auto; touch-action: pan-y; }
 	  body {
 	    background: #ffffff; color: #141420;
 	    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
@@ -121,10 +121,11 @@
 		#intro-footer { left: 48px; right: 48px; }
 	}
 
-	@media (max-width: 760px) {
-		#nav { padding: 20px 24px; row-gap: 10px; }
-		#intro-footer { left: 24px; right: 24px; bottom: calc(max(9vh, 80px) + 24px); gap: 12px; }
-		#intro-footer .email { margin-bottom: 6px; }
+		@media (max-width: 760px) {
+			#scroll-space { height: 210vh; }
+			#nav { padding: 20px 24px; row-gap: 10px; }
+			#intro-footer { left: 24px; right: 24px; bottom: calc(max(9vh, 80px) + 24px); gap: 12px; }
+			#intro-footer .email { margin-bottom: 6px; }
 		#intro-footer .logo { font-size: clamp(36px, 11vw, 72px); }
 		#intro-footer .tagline { font-size: 13px; text-align: left; }
 		#scroll-hint { bottom: max(16px, env(safe-area-inset-bottom)); font-size: 14px; }
@@ -4149,12 +4150,12 @@ const screen = new THREE.Mesh(screenGeo, screenMat);
   //   p: 0(맨 위) ~ 1(맨 아래). 부드럽게 하려고 targetP를 받아 매 프레임 lerp.
   let targetP = 0, curP = 0;
 
-  function placeCamera(p) {
-    const e = p * p;                         // ease-in → 뒤로 갈수록 가속
-		const aspect = innerWidth / innerHeight;
-		const frame = aspect < 1 ? 1.16 : aspect < 1.45 ? 1.06 : 1;
-		const radius = (7 - 6.75 * e) * frame;   // 좁은 화면에서는 여백을 확보
-    const theta  = e * Math.PI * 3.5;        // 원형으로 도는 각도(가속)
+	  function placeCamera(p) {
+	    const e = p * p;                         // ease-in → 뒤로 갈수록 가속
+			const aspect = innerWidth / innerHeight;
+			const frame = aspect < 1 ? 1.16 : aspect < 1.45 ? 1.06 : 1;
+			const radius = (7 - 6.75 * e) * frame;   // 좁은 화면에서는 여백을 확보
+	    const theta  = e * Math.PI * (innerWidth <= 760 ? 5.2 : 3.5);        // 모바일은 짧은 스크롤 안에서도 더 역동적으로 회전
     const y      = Math.sin(p * Math.PI) * 1.3 + 0.2; // 떠올랐다 내려오는 호
     camera.position.set(Math.sin(theta) * radius, y, Math.cos(theta) * radius + lensTarget.z);
     camera.lookAt(lensTarget);
@@ -4171,6 +4172,22 @@ const screen = new THREE.Mesh(screenGeo, screenMat);
 	  };
 	  addEventListener('scroll', updateNativeProgress, { passive: true });
 	  addEventListener('resize', updateNativeProgress, { passive: true });
+	  if (isTouchScroll) {
+	    let touchY = 0;
+	    addEventListener('touchstart', e => {
+	      touchY = e.touches && e.touches.length ? e.touches[0].clientY : 0;
+	    }, { passive: true, capture: true });
+	    addEventListener('touchmove', e => {
+	      if (!e.touches || !e.touches.length || redirectedToHome) return;
+	      const nextY = e.touches[0].clientY;
+	      const delta = touchY - nextY;
+	      touchY = nextY;
+	      if (Math.abs(delta) < 1) return;
+	      e.preventDefault();
+	      scrollBy(0, delta);
+	      updateNativeProgress();
+	    }, { passive: false, capture: true });
+	  }
 	  if (window.Lenis && !isTouchScroll) {
 	    lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
 	    lenis.on('scroll', () => window.ScrollTrigger && ScrollTrigger.update());
@@ -4240,7 +4257,7 @@ const screen = new THREE.Mesh(screenGeo, screenMat);
     // 그대로 써서 임계값이 정직하게 지켜지게 함.
     // ⚠️ 구간도 반드시 (0.50, X)처럼 **0.50에서 시작**해야 한다 — (0, 0.50)으로 하면 시작점이 0이라
     // 스크롤 0%부터 서서히 나타나버려서 "50% 전엔 안 보인다"는 요구를 못 지킴.
-    const t = smooth(0, 0.1, p);              // p<0.50이면 항상 0(완전히 숨김), 0.50~0.55 사이에서만 서서히 등장
+	    const t = smooth(0.50, 0.58, p);              // 중반 이후에만 보이게 해서 3D 인터랙션을 먼저 경험하게 함
     const bounce = backOut(t);                    // 위치 튕김 전용(오버슈트 허용, 클램프 안 함)
     const outFade = 1 - smooth(0.62, 0.78, p);
     const io = t * outFade;
