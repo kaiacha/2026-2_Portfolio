@@ -18,21 +18,23 @@
   :root { color-scheme: light; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: auto; }
-  body {
-    background: #ffffff; color: #141420;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
+	  body {
+	    background: #ffffff; color: #141420;
+	    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+	    -webkit-font-smoothing: antialiased;
+	    touch-action: pan-y;
+	    -webkit-overflow-scrolling: touch;
+	  }
 
   /* ── 스크롤 길이를 만드는 스페이서: 이 높이만큼 스크롤하는 동안 인트로가 재생됨 ── */
   #scroll-space { height: 500vh; }
 
   /* ── 배경: 마우스 따라 일렁이는 흰색/레드 그라디언트(셰이더 캔버스) ── */
-  #bg { position: fixed; inset: 0; z-index: 0; display: block; }
+	  #bg { position: fixed; inset: 0; z-index: 0; display: block; pointer-events: none; touch-action: pan-y; }
 
   /* ── 3D 무대: 화면에 고정. 캔버스는 투명(배경 셰이더가 비침) ── */
-  #stage { position: fixed; inset: 0; z-index: 1; }
-  #stage canvas { display: block; background: transparent; }
+	  #stage { position: fixed; inset: 0; z-index: 1; pointer-events: none; touch-action: pan-y; }
+	  #stage canvas { display: block; background: transparent; pointer-events: none; touch-action: pan-y; }
 
   /* Figma 소스 폰트. 로컬 파일로 자체완결 유지 (fonts.gstatic.com 직다운로드, 외부 네트워크 없음) */
   @font-face {
@@ -4160,23 +4162,27 @@ const screen = new THREE.Mesh(screenGeo, screenMat);
     camera.updateProjectionMatrix();
   }
 
-  // ── 4. Lenis + ScrollTrigger 로 스크롤을 진행도에 연결 ─────────────────────
-  let lenis = null;
-  if (window.Lenis) {
-    lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
-    lenis.on('scroll', () => window.ScrollTrigger && ScrollTrigger.update());
-  }
-  if (window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
+	  // ── 4. 스크롤 진행도 연결 ────────────────────────────────────────────────
+	  let lenis = null;
+	  const isTouchScroll = matchMedia('(hover: none), (pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+	  const updateNativeProgress = () => {
+	    const maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+	    targetP = Math.min(1, Math.max(0, scrollY / maxScroll));
+	  };
+	  addEventListener('scroll', updateNativeProgress, { passive: true });
+	  addEventListener('resize', updateNativeProgress, { passive: true });
+	  if (window.Lenis && !isTouchScroll) {
+	    lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+	    lenis.on('scroll', () => window.ScrollTrigger && ScrollTrigger.update());
+	  }
+	  if (window.ScrollTrigger && !isTouchScroll) {
+	    gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.create({
       trigger: '#scroll-space', start: 'top top', end: 'bottom bottom', scrub: 1,
       onUpdate: self => { targetP = self.progress; },
     });
-  } else {
-    addEventListener('scroll', () => {
-      targetP = scrollY / (document.body.scrollHeight - innerHeight || 1);
-    });
-  }
+	  }
+	  updateNativeProgress();
 
   // ── 5. 후반 전환 처리(헤드셋 페이드 + 포털 오픈 + 플래시) ──────────────────
   const home = document.getElementById('home');
