@@ -244,10 +244,10 @@
 
 <!-- Menu bar (인트로 #nav와 디자인 통일: Roboto Medium, #000, 반응형 clamp. 호버 빨강 + 링크는 유지) -->
 <div id="site-nav" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:30px clamp(18px, 8.33vw, 120px);font-family:'Roboto', sans-serif;font-weight:500;font-size:clamp(15px, 2.08vw, 30px);line-height:1.1;text-transform:uppercase;background:var(--bg)">
-  <a href="#home" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">Home</a>
-  <a href="#hci" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">HCI</a>
-  <a href="#ux" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">UX</a>
-  <a href="#about" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">About</a>
+  <a href="/Home/#home" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">Home</a>
+  <a href="/Home/#hci" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">HCI</a>
+  <a href="/Home/#ux" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">UX</a>
+  <a href="/Home/#about" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">About</a>
 </div>
 
 <main style="max-width:1200px;margin:0 auto;padding:64px 120px 140px;display:flex;flex-direction:column;gap:104px">
@@ -824,10 +824,10 @@ class Component extends DCLogic {
     const siblings = all.filter(p => p.cat === active.cat).map(p => ({ ...p, bg: p.id === active.id ? 'var(--neutral-200)' : 'transparent', fg: 'var(--text)' }));
     const ic = d => ({ __html: `<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${d}</svg>` });
     const dock = [
-      { label: 'Home', href: '#home', icon: ic('<path d="M3 10.5 12 3l9 7.5V21H3z"/>') },
-      { label: 'HCI', href: '#hci', icon: ic('<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/>') },
-      { label: 'UX', href: '#ux', icon: ic('<rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/>') },
-      { label: 'About', href: '#about', icon: ic('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>') },
+      { label: 'Home', href: '/Home/#home', icon: ic('<path d="M3 10.5 12 3l9 7.5V21H3z"/>') },
+      { label: 'HCI', href: '/Home/#hci', icon: ic('<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/>') },
+      { label: 'UX', href: '/Home/#ux', icon: ic('<rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/>') },
+      { label: 'About', href: '/Home/#about', icon: ic('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>') },
       { label: 'Mail', href: 'mailto:chamikyo@gmail.com?subject=Contact%20Mail', icon: ic('<rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/>') },
       { label: 'CV', href: 'https://drive.google.com/file/d/1U9MMREyBAPwcnWEg8w2uaDvllEjhYtUc/view?usp=sharing', target: '_blank', rel: 'noopener', icon: ic('<path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 13h6M9 17h6"/>') },
     ].map(d => ({ target: '_self', rel: '', ...d, bg: 'var(--neutral-100)', fg: 'var(--accent-700)' }));
