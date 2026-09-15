@@ -1,0 +1,257 @@
+2:I[4761,["699","static/chunks/8e1d74a4-e8474cddc39f1df5.js","145","static/chunks/145-ac7ff781a807e21f.js","237","static/chunks/237-84557e2e43cfdf86.js","609","static/chunks/609-f7034dfc1314cf0f.js","490","static/chunks/490-b5edac9b04e2d148.js","935","static/chunks/app/LifeLine/page-816b2861d594daa3.js"],"default"]
+4:I[3719,["699","static/chunks/8e1d74a4-e8474cddc39f1df5.js","145","static/chunks/145-ac7ff781a807e21f.js","237","static/chunks/237-84557e2e43cfdf86.js","609","static/chunks/609-f7034dfc1314cf0f.js","490","static/chunks/490-b5edac9b04e2d148.js","935","static/chunks/app/LifeLine/page-816b2861d594daa3.js"],"default"]
+9:I[6888,["699","static/chunks/8e1d74a4-e8474cddc39f1df5.js","145","static/chunks/145-ac7ff781a807e21f.js","237","static/chunks/237-84557e2e43cfdf86.js","609","static/chunks/609-f7034dfc1314cf0f.js","490","static/chunks/490-b5edac9b04e2d148.js","935","static/chunks/app/LifeLine/page-816b2861d594daa3.js"],"default"]
+b:I[182,["699","static/chunks/8e1d74a4-e8474cddc39f1df5.js","145","static/chunks/145-ac7ff781a807e21f.js","237","static/chunks/237-84557e2e43cfdf86.js","609","static/chunks/609-f7034dfc1314cf0f.js","490","static/chunks/490-b5edac9b04e2d148.js","935","static/chunks/app/LifeLine/page-816b2861d594daa3.js"],"default"]
+f:I[4707,[],""]
+10:I[6423,[],""]
+3:T4eb,
+      <div class="space-y-3">
+        <div>
+          <p class="text-slate-400 mb-1.5 text-sm"><strong class="text-white">Role:</strong> Lead UX + Human Systems Designer (sole designer)</p>
+          <p class="text-slate-400 mb-1.5 text-sm"><strong class="text-white">Timeline:</strong> Fall 2025, HSE 542 (Graduate)</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Contributions:</p>
+          <ul class="list-disc list-inside text-slate-400 space-y-0.5 ml-4 text-sm">
+            <li>Designed all digital dashboards (Navigator, Pilot, EMS)</li>
+            <li>Designed all physical controllers</li>
+            <li>Designed the operator workspace using anthropometric data</li>
+            <li>Wrote the system concept and interaction logic</li>
+            <li>Built a real-time interactive React prototype for design validation</li>
+          </ul>
+        </div>
+        <div class="mt-4">
+          <p class="text-white font-semibold mb-1.5 text-sm">Goal:</p>
+          <p class="text-slate-300 text-sm">
+            Create a clear, reliable, and cognitively efficient interface ecosystem that supports 
+            emergency medical UAV missions end-to-end.
+          </p>
+        </div>
+      </div>
+    5:T524,
+      <p class="text-sm text-slate-300 mb-4">
+        Emergencies such as anaphylaxis, opioid overdoses, cardiac arrest, and severe asthma often 
+        escalate within minutes—faster than ambulances can arrive. UAVs can bridge this gap by transporting 
+        EpiPens, naloxone, inhalers, and first-aid supplies directly to the scene.
+      </p>
+      <p class="text-slate-400 mb-3 text-sm">According to the project's white paper, the mission follows this sequence:</p>
+      <ul class="list-disc list-inside text-slate-300 space-y-1 ml-4 text-sm">
+        <li>Automated launch and optimized routing</li>
+        <li>On-station verification using live video and audio</li>
+        <li>Two-person confirmation for payload release</li>
+        <li>Remote medical guidance from EMS personnel</li>
+        <li>Autonomous return-to-base for recharge and resupply</li>
+      </ul>
+      <div class="mt-4 p-3 bg-slate-800 rounded-lg border-l-4 border-blue-500">
+        <p class="text-white font-semibold mb-1.5 text-sm">Design Insight:</p>
+        <p class="text-slate-300 text-sm">
+          A high-stakes environment like this requires interfaces that minimize cognitive load, support 
+          rapid decision-making, and maintain shared situational awareness across multiple roles.
+        </p>
+      </div>
+    6:T5b9,
+      <p class="text-sm text-slate-300 mb-4">
+        Although the UAV mission involves five operational roles, this system design focuses on the three 
+        human–computer interfaces:
+      </p>
+      <div class="space-y-3">
+        <div class="p-4 bg-slate-800 rounded-lg border border-slate-700">
+          <h3 class="text-base font-bold text-white mb-1.5">Navigator (Mission Control)</h3>
+          <p class="text-slate-300 text-sm">
+            Responsible for route selection, hazard awareness, and mission timeline.
+          </p>
+        </div>
+        <div class="p-4 bg-slate-800 rounded-lg border border-slate-700">
+          <h3 class="text-base font-bold text-white mb-1.5">Pilot (Flight Control)</h3>
+          <p class="text-slate-300 text-sm">
+            Oversees aircraft health, flight mode, and manual overrides.
+          </p>
+        </div>
+        <div class="p-4 bg-slate-800 rounded-lg border border-slate-700">
+          <h3 class="text-base font-bold text-white mb-1.5">EMS (Medical Support)</h3>
+          <p class="text-slate-300 text-sm">
+            Reviews patient information, compares arrival times, and manages medical protocols.
+          </p>
+        </div>
+      </div>
+      <p class="text-slate-400 mt-4 text-sm">
+        Each role requires different information structures, workflows, and mental models—making a unified 
+        dashboard impractical. This led to a role-based interface architecture.
+      </p>
+    7:T7b2,
+      <p class="text-sm text-slate-300 mb-4">
+        The design was grounded in human factors concepts from attention, perception, memory, and mental model principles.
+      </p>
+      <div class="space-y-3">
+        <p class="text-white font-semibold mb-3 text-sm">Key principles applied across all UIs:</p>
+        <ul class="space-y-2 text-slate-300 text-sm">
+          <li class="flex items-start">
+            <span class="text-blue-400 mr-2">•</span>
+            <span><strong class="text-white">Salience compatibility:</strong> Risk, warnings, and critical system states use color and motion proportional to urgency.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-400 mr-2">•</span>
+            <span><strong class="text-white">Proximity compatibility:</strong> Frequently cross-referenced data (speed + altitude, patient info + allergies, etc.) is grouped for fast scanning.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-400 mr-2">•</span>
+            <span><strong class="text-white">Discriminability:</strong> Map modes, route types, and patient categories are visually distinct.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-400 mr-2">•</span>
+            <span><strong class="text-white">Knowledge in the world:</strong> Real-time visuals externalize memory demands through live maps, cameras, and persistent indicators.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-blue-400 mr-2">•</span>
+            <span><strong class="text-white">Mental model alignment:</strong> Controls and displays follow established aviation and medical conventions.</span>
+          </li>
+        </ul>
+      </div>
+      <p class="text-slate-400 mt-4 text-sm">
+        These principles shaped every interface and physical controller design decision.
+      </p>
+    8:T66f,
+      <div class="space-y-3">
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Design Challenge:</p>
+          <p class="text-slate-300 text-sm">
+            Provide continuous spatial awareness and help operators choose between speed-optimized and hazard-avoiding routes.
+          </p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Design Intent:</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm">
+            <li>Place the live navigation map at the center as the primary decision surface</li>
+            <li>Use color-coded route overlays (blue/green)</li>
+            <li>Display speed, altitude, GPS, and battery as a unified cluster</li>
+            <li>Provide a clear six-stage mission timeline</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Human Factors Applied:</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm">
+            <li>Salience compatibility for critical warnings</li>
+            <li>Proximity grouping of flight metrics</li>
+            <li>Knowledge in the world through persistent route overlays</li>
+          </ul>
+        </div>
+        <div class="p-3 bg-slate-800 rounded-lg border-l-4 border-blue-500">
+          <p class="text-white font-semibold mb-1.5 text-sm">Outcome:</p>
+          <p class="text-slate-300 text-sm">
+            An interface that lets navigators understand the UAV's situation at a glance and adjust decisions without losing context.
+          </p>
+        </div>
+      </div>
+    a:T605,
+      <div class="space-y-3">
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Design Challenge:</p>
+          <p class="text-slate-300 text-sm">
+            Ensure pilots can instantly evaluate aircraft safety and intervene when needed.
+          </p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Design Intent:</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm">
+            <li>Full-width live camera feed at top for immediate visual context</li>
+            <li>Autopilot, health indicators, and communication status fixed in predictable locations</li>
+            <li>Clear Auto/Manual toggle with redundant cues</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Human Factors Applied:</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm">
+            <li>Proximity compatibility for flight data and system health</li>
+            <li>Redundancy gain (labels + icons)</li>
+            <li>Familiar cockpit-style arrangement to match pilot mental models</li>
+          </ul>
+        </div>
+        <div class="p-3 bg-slate-800 rounded-lg border-l-4 border-blue-500">
+          <p class="text-white font-semibold mb-1.5 text-sm">Outcome:</p>
+          <p class="text-slate-300 text-sm">
+            A layout that reinforces safe flight oversight and quick reaction under high workload.
+          </p>
+        </div>
+      </div>
+    c:T5fc,
+      <div class="space-y-3">
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Design Challenge:</p>
+          <p class="text-slate-300 text-sm">
+            Enable EMS personnel to rapidly assess patient risk and prepare appropriate interventions.
+          </p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Design Intent:</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm">
+            <li>Organize patient demographics → allergies → symptoms → payload contents</li>
+            <li>Compare UAV vs ambulance ETA side-by-side</li>
+            <li>Standardize medical information structure to match real EMR patterns</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Human Factors Applied:</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm">
+            <li>Discriminability between patient data categories</li>
+            <li>Proximity grouping of clinically relevant information</li>
+            <li>Redundant allergy cues (icons + color + labels)</li>
+          </ul>
+        </div>
+        <div class="p-3 bg-slate-800 rounded-lg border-l-4 border-blue-500">
+          <p class="text-white font-semibold mb-1.5 text-sm">Outcome:</p>
+          <p class="text-slate-300 text-sm">
+            A clinically intuitive interface that supports fast medical decision-making.
+          </p>
+        </div>
+      </div>
+    d:T53a,
+      <div class="space-y-3">
+        <p class="text-sm text-slate-300">
+          I designed the operator workstation using anthropometric data from the U.S. adult population (5th–95th percentile).
+        </p>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Anthropometric Basis</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm">
+            <li>Sitting eye height: 27.5–33.8 in</li>
+            <li>Forward reach: &lt; 24.4 in</li>
+            <li>Elbow height: 9–13 in</li>
+          </ul>
+          <p class="text-slate-400 mt-1.5 text-sm">These values informed monitor height, console depth, and control placement.</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">Ergonomic Risk Reduction</p>
+          <p class="text-slate-300 mb-1.5 text-sm">Specific risks and mitigations included:</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm">
+            <li>Pilot: Continuous joystick use → added forearm support and low-force activation</li>
+            <li>Navigator: Slider placement reduced shoulder elevation risk</li>
+            <li>EMS: Standard laptop posture risks → recommended separating display and input devices</li>
+          </ul>
+        </div>
+      </div>
+    e:T559,
+      <div class="space-y-3">
+        <p class="text-sm text-slate-300">
+          Through this project, I learned how to design for an entire human-machine system—extending far beyond screen layouts.
+        </p>
+        <div>
+          <p class="text-white font-semibold mb-1.5 text-sm">This project demonstrates:</p>
+          <ul class="list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm">
+            <li>Systems-level UX thinking</li>
+            <li>Application of human factors to both digital and physical interfaces</li>
+            <li>Designing for time-critical, safety-sensitive environments</li>
+            <li>Creating role-specific workflows that reduce cognitive load</li>
+            <li>Validating interactions through functional prototypes</li>
+          </ul>
+        </div>
+        <div class="p-3 bg-slate-800 rounded-lg border-l-4 border-blue-500">
+          <p class="text-white font-semibold mb-1.5 text-sm">Reflection:</p>
+          <p class="text-slate-300 text-sm">
+            Designing every touchpoint—from controllers to dashboards to workspace—reinforced how human-centered 
+            engineering principles must scale across the entire operational ecosystem. This experience shaped my 
+            approach to building interfaces that work reliably under pressure.
+          </p>
+        </div>
+      </div>
+    0:["IU4N-mmQ_mWPL0eI1XFM4",[[["",{"children":["LifeLine",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",{"children":["LifeLine",{"children":["__PAGE__",{},[["$L1",["$","main",null,{"className":"h-screen w-full overflow-hidden bg-slate-950 pb-[3.0rem] md:pb-0","children":["$","$L2",null,{"slides":[{"id":"overview","tag":"Project Overview","title":"Emergency Medical Drone System","body":"\n      <p class=\"text-lg md:text-xl text-slate-200 mb-4\">\n        Designing a human-centered, multi-role interface ecosystem for emergency UAV operations\n      </p>\n      <p class=\"text-sm text-slate-400 leading-relaxed\">\n        This project explores how unmanned aerial vehicles can support time-critical medical emergencies \n        by delivering lifesaving supplies faster than traditional EMS response. I designed the complete \n        human–machine system—three role-based dashboards, physical controllers, and the operator workspace—grounded \n        in human factors, real-time operations, and safety-critical UX principles.\n      </p>\n    "},{"id":"overview-details","tag":"01. Overview","title":"Project Details","body":"$3"},{"id":"dashboard-live","layout":"dashboard-full","component":"$4","image":"/images/NavigatorDashboard.png","imageAlt":"Navigator Dashboard - Mobile View"},{"id":"context","tag":"02. Context & Mission Need","title":"The Problem","body":"$5","layout":"split","image":"/images/lifeline/emergency.png","imageAlt":"Emergency medical responders providing aid"},{"id":"roles","tag":"03. Role Analysis","title":"Understanding Three Distinct Operators","body":"$6"},{"id":"principles","tag":"04. Human Systems Engineering Principles","title":"Design Foundation","body":"$7","layout":"split","images":["/images/lifeline/(updated) Wireframe - Navigator.png","/images/lifeline/(updated) Wireframe - pilot.png","/images/lifeline/(updated) Wireframe - EMS.png"],"imageAlts":["Navigator Dashboard Wireframe","Pilot Dashboard Wireframe","EMS Dashboard Wireframe"]},{"id":"dashboard-navigator","tag":"05. Dashboard Design","title":"Navigator Dashboard — Mission Control","layout":"split","component":"$4","image":"/images/NavigatorDashboard.png","imageAlt":"Navigator Dashboard","body":"$8"},{"id":"dashboard-pilot","tag":"05. Dashboard Design","title":"Pilot Dashboard — Flight Control","layout":"split","component":"$9","image":"/images/PilotDashboard.png","imageAlt":"Pilot Dashboard","body":"$a"},{"id":"dashboard-ems","tag":"05. Dashboard Design","title":"EMS Dashboard — Medical Support","layout":"split","component":"$b","image":"/images/EMSDashboard.png","imageAlt":"EMS Dashboard","body":"$c"},{"id":"controllers-pilot","tag":"06. Physical Controller Design","title":"Pilot Controller","layout":"split","body":"\n      <div class=\"space-y-3\">\n        <div>\n          <p class=\"text-white font-semibold mb-1.5 text-sm\">Key Elements:</p>\n          <ul class=\"list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm\">\n            <li>Joystick and throttle for continuous manual control</li>\n            <li>Auto/Manual toggle with tactile detents</li>\n            <li>Large guarded emergency stop button</li>\n            <li>Map-integrated touch interface for waypoint adjustments</li>\n            <li>Push-to-talk voice command</li>\n          </ul>\n        </div>\n        <div>\n          <p class=\"text-white font-semibold mb-1.5 text-sm\">Design Rationale:</p>\n          <ul class=\"list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm\">\n            <li>Importance + frequency determine placement</li>\n            <li>Controls follow operational sequence</li>\n            <li>Spatial mapping aligns joystick motion with on-screen behavior</li>\n          </ul>\n        </div>\n      </div>\n    ","image":"/images/lifeline/Pilot Controller.png","imageAlt":"Pilot Controller Design - Rugged drone controller with joysticks and display","imageSize":"medium"},{"id":"controllers-navigator","tag":"06. Physical Controller Design","title":"Navigator Controller","layout":"split","body":"\n      <div class=\"space-y-3\">\n        <div>\n          <p class=\"text-white font-semibold mb-1.5 text-sm\">Key Elements:</p>\n          <ul class=\"list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm\">\n            <li>Tilt/zoom sliders positioned for low information access cost</li>\n            <li>Discrete buttons for record and target lock</li>\n            <li>LED indicators for persistent system state feedback</li>\n          </ul>\n        </div>\n        <div>\n          <p class=\"text-white font-semibold mb-1.5 text-sm\">Design Rationale:</p>\n          <p class=\"text-slate-300 text-sm\">\n            Camera operations require continuous feedback loops, making slider proximity to the video feed essential.\n          </p>\n        </div>\n      </div>\n    ","image":"/images/lifeline/doublemonitor.png","imageAlt":"Navigator Controller Design - Dual monitor workstation with dashboard interface"},{"id":"controllers-ems","tag":"06. Physical Controller Design","title":"EMS Controller","layout":"split","body":"\n      <div class=\"space-y-3\">\n        <div>\n          <p class=\"text-white font-semibold mb-1.5 text-sm\">Key Elements:</p>\n          <ul class=\"list-disc list-inside text-slate-300 space-y-0.5 ml-4 text-sm\">\n            <li>Rugged laptop interface with integrated data display</li>\n            <li>Protocol activation button</li>\n            <li>Verbal confirmation workflow</li>\n          </ul>\n        </div>\n        <div>\n          <p class=\"text-white font-semibold mb-1.5 text-sm\">Design Rationale:</p>\n          <p class=\"text-slate-300 text-sm\">\n            Combines discrete decision points with continuous navigation while ensuring high reliability in medical contexts.\n          </p>\n        </div>\n      </div>\n    ","image":"/images/lifeline/controller.png","imageAlt":"EMS Controller Design - Rugged laptop with dashboard interface"},{"id":"workspace-1","tag":"07. Workspace & Operator Environment Design","title":"Ergonomic Workspace Design","layout":"centered","body":"$d"},{"id":"workspace-2","tag":"07. Workspace & Operator Environment Design","title":"Workspace Rendering","layout":"split","body":"\n      <div class=\"space-y-3\">\n        <p class=\"text-slate-300 text-sm\">\n          The final containerized workspace design supports neutral postures for 12-hour shifts, adjustable \n          chairs and dual monitor arms, clear line-of-sight across operators, and equipment spacing for teamwork and safety.\n        </p>\n      </div>\n    ","images":["/images/lifeline/chair_annotation.png","/images/lifeline/5.png","/images/lifeline/2.png","/images/lifeline/3.png"],"imageAlts":["Containerized workspace design","Ergonomic workstation with measurements","Ergonomic chair with mannequin","Wireframe ergonomic office chair"]},{"id":"validation-1","tag":"08. Functional Design Validation","title":"Improvement #1: Alert Banner & Header Stability","layout":"split","beforeAfterImages":{"before":"/images/lifeline/before-alart.png","after":"/images/lifeline/after-alart.png","beforeAlt":"Before: Alert banner pushing header downward","afterAlt":"After: Alert banner in fixed position with improved layout","beforeText":"\n        <ul class=\"list-disc list-inside text-slate-300 space-y-1 ml-3\">\n          <li>The alert banner pushed the entire header downward</li>\n          <li>Role selection and status indicators shifted positions</li>\n          <li>This caused visual instability during flight</li>\n          <li>High-risk alerts competed with navigation controls</li>\n        </ul>\n      ","afterText":"\n        <ul class=\"list-disc list-inside text-slate-300 space-y-1 ml-3\">\n          <li>Alert banner moved to a fixed position next to the role selector</li>\n          <li>No more layout jumps</li>\n          <li>Added risk-level salience (color, icon, emphasis)</li>\n          <li>Maintains visibility while reducing cognitive load</li>\n        </ul>\n      "}},{"id":"validation-2","tag":"08. Functional Design Validation","title":"Improvement #2: Map-Camera Layout Optimization","layout":"split","beforeAfterImages":{"before":"/images/lifeline/before-livecamera.png","after":"/images/lifeline/after-livecamera.png","beforeAlt":"Before: Camera feed below map as separate block","afterAlt":"After: Camera feed as bottom-right overlay on map","beforeText":"\n        <ul class=\"list-disc list-inside text-slate-300 space-y-1 ml-3\">\n          <li>The camera feed sat below the map as a separate block</li>\n          <li>Reduced the map's size even though it's the Navigator's primary task</li>\n          <li>Required large vertical gaze shifts</li>\n          <li>Broke visual momentum while tracking the drone</li>\n        </ul>\n      ","afterText":"\n        <ul class=\"list-disc list-inside text-slate-300 space-y-1 ml-3\">\n          <li>Camera feed repositioned as a bottom-right overlay</li>\n          <li>Preserves the map as the dominant surface</li>\n          <li>Only a small diagonal eye movement required</li>\n          <li>Strengthens situational awareness and task continuity</li>\n        </ul>\n      "}},{"id":"reflection","tag":"09. Outcomes & Reflection","title":"Learning & Impact","body":"$e"}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/feae7f798dc8d2db.css","precedence":"next","crossOrigin":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/d2fa84b85bf90130.css","precedence":"next","crossOrigin":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/477932e913dd07cb.css","precedence":"next","crossOrigin":"$undefined"}]]],null],null]},[null,["$","$Lf",null,{"parallelRouterKey":"children","segmentPath":["children","LifeLine","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L10",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/69a92781101c2cf7.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"children":["$","$Lf",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L10",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}]]}]],null],null],["$L11",null]]]]
+11:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"LifeLine | Mikyo Kaia Cha | Mikyo Kaia Cha"}],["$","meta","3",{"name":"description","content":"LifeLine campus companion experience crafted by Mikyo Kaia Cha."}],["$","meta","4",{"name":"author","content":"Mikyo Kaia Cha"}],["$","meta","5",{"name":"keywords","content":"UX designer,user experience design,portfolio,Mikyo Kaia Cha,human-centered design"}],["$","meta","6",{"name":"creator","content":"Mikyo Kaia Cha"}],["$","meta","7",{"name":"robots","content":"index, follow"}],["$","meta","8",{"name":"googlebot","content":"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","9",{"property":"og:title","content":"LifeLine | Mikyo Kaia Cha | Mikyo Kaia Cha"}],["$","meta","10",{"property":"og:description","content":"LifeLine campus companion experience crafted by Mikyo Kaia Cha."}],["$","meta","11",{"property":"og:url","content":"https://www.kaiacha.com/"}],["$","meta","12",{"property":"og:site_name","content":"Mikyo Kaia Cha Portfolio"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:type","content":"website"}],["$","meta","15",{"name":"twitter:card","content":"summary"}],["$","meta","16",{"name":"twitter:title","content":"LifeLine | Mikyo Kaia Cha | Mikyo Kaia Cha"}],["$","meta","17",{"name":"twitter:description","content":"LifeLine campus companion experience crafted by Mikyo Kaia Cha."}]]
+1:null

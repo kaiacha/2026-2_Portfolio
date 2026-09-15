@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="../">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<title>Kaia Cha Portfolio</title>
+<meta name="description" content="Human factors and UX portfolio of Kaia Cha, focused on XR rehabilitation, HCI research, product design, and interactive systems.">
+<meta name="author" content="Kaia Cha">
+<meta property="og:title" content="Kaia Cha Portfolio">
+<meta property="og:description" content="Human factors and UX portfolio focused on XR rehabilitation, HCI research, product design, and interactive systems.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kaia Cha Portfolio">
+<meta name="twitter:description" content="Human factors and UX portfolio focused on XR rehabilitation, HCI research, product design, and interactive systems.">
+<script src="./analytics.js" defer></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/industry-4d526f65-d19e-457b-afaf-6c0cd9c2f754/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap">
+  <script src="_ds/industry-4d526f65-d19e-457b-afaf-6c0cd9c2f754/_ds_bundle.js"></script>
+  <style>
+    /* KAIA CHA 워드마크 전용 — 인트로(vr-portfolio-hero-Intro.html)와 동일 파일 재사용, 같은 폴더 */
+    @font-face { font-family: 'Rock 3D'; font-style: normal; font-weight: 400; font-display: swap; src: url('./Rock3D-Regular.woff2') format('woff2'); }
+    /* Figma(2026 2 Portfolio, node 18:2) 전용 토큰 — 이 페이지만 흰 배경 + 레드 액센트로
+       공용 "industry" 디자인시스템(연회색 배경 + 블루 액센트)을 오버라이드한다. 다른 산출물엔 영향 없음. */
+    :root {
+      --bg: #ffffff; --text: #1a1a1a; --divider: #e4e4df;
+      --neutral-100: #f5f5f3; --neutral-200: #e8e8e4; --neutral-400: #b4b4ae;
+      --neutral-600: #6e6e68; --neutral-700: #4e4e48; --neutral-800: #2e2e2a;
+      --accent: #e5352a; --accent-700: #e5352a; --color-accent: #e5352a;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; overflow-x: hidden; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); font-family: 'Roboto', sans-serif; background: var(--bg); }
+    body { overflow-x: hidden; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Roboto', sans-serif; font-weight: 500; letter-spacing: -0.01em; }
+    a { color: var(--text); text-decoration: none; }
+    a:hover { color: var(--accent); text-decoration: none; }
+    .tag { font-family: 'Roboto', sans-serif; }
+    .tag-neutral { background: var(--neutral-100); border: 1px solid var(--divider); color: var(--neutral-700); border-radius: 6px; }
+    .rail { scrollbar-width: none; }
+    .rail::-webkit-scrollbar { display: none; }
+
+    /* Experience 로고: 기본 로고 → 호버 시 대체 로고/사진으로 크로스페이드 */
+    .exp-logo-wrap { position: relative; flex: none; width: 72px; height: 72px; border-radius: 50%; overflow: hidden; border: 1px solid var(--divider); background: #fff; }
+    .exp-logo-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity .3s ease; }
+    .exp-logo-wrap .exp-logo-hover { opacity: 0; }
+    .exp-row:hover .exp-logo-default { opacity: 0; }
+    .exp-row:hover .exp-logo-hover { opacity: 1; }
+    .experience-list .exp-logo-wrap { width: 101px; height: 101px; }
+    #dock { transition: transform .42s cubic-bezier(.22,1,.36,1), opacity .28s ease; }
+    #dock.dock-hidden { transform: translate(-50%, calc(100% + 24px)) !important; opacity: 0; pointer-events: none; }
+    #dock { border-radius: 4px !important; }
+    #dock a { border-radius: 2px !important; }
+    #dock a > span:first-child { border-radius: 2px !important; }
+    #home .home-papers .scp1:hover { background: #fff !important; color: var(--accent) !important; }
+    #home .home-papers .scp1:hover > div { color: var(--accent) !important; }
+    .ux-grid { grid-template-columns: 1fr !important; }
+    #hci .hci-project-row,
+    .ux-grid .ux-project-card { display: grid !important; grid-template-columns: minmax(240px, .72fr) minmax(0, 1.28fr) !important; column-gap: 56px !important; align-items: start; }
+    #hci .hci-project-copy,
+    .ux-grid .ux-project-copy { grid-column: 1; grid-row: 1; min-width: 0; gap: 8px !important; }
+    #hci .hci-project-media,
+    .ux-grid .ux-project-media { grid-column: 2; grid-row: 1; width: 100%; min-width: 0; }
+    #hci .hci-project-copy > span:nth-child(2),
+    .ux-grid .ux-project-copy > span:nth-child(2) { font-size: 21px !important; line-height: 26px !important; }
+    #hci .hci-project-copy > span:nth-child(4),
+    .ux-grid .ux-project-copy > span:nth-child(3) { font-size: 14px !important; line-height: 21px !important; }
+    #hci .hci-project-figure,
+    .ux-grid .ux-project-media figure { width: 100%; aspect-ratio: 16 / 9; }
+    #hci .hci-project-figure img,
+    .ux-grid .ux-project-media img { width: 100%; height: 100%; object-fit: cover; }
+    #about li::marker { color: var(--accent); }
+    #about.about-sticky-section { min-height: calc(100vh - 72px); }
+    #about .about-layout { display: grid; grid-template-columns: minmax(280px, 1.05fr) minmax(0, 1.25fr); gap: 56px; align-items: start; min-width: 0; }
+    #about .about-sticky-portrait {
+      position: sticky; top: 96px; align-self: start;
+      border: 1px solid var(--divider); background: #fff; overflow: hidden;
+      min-height: min(640px, calc(100vh - 136px)); aspect-ratio: 3 / 4;
+    }
+    #about .about-sticky-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center -5%; display: block; }
+    #about .about-scroll-copy { min-width: 0; overflow: visible; padding-right: 0; }
+    #about .about-scroll-copy::-webkit-scrollbar { width: 0; height: 0; }
+    #about .about-mobile-portrait { display: none; }
+
+    main { width: 100%; max-width: 1360px !important; padding-left: 72px !important; padding-right: 72px !important; overflow-x: clip; }
+
+    /* HCI(VR) 프로젝트에 마우스 올리면 커서를 따라다니며 살짝 흔들리는 VR 아이콘 */
+    /* 커서와 겹쳐서 헤드셋이 안 보이던 것 — 커서 정중앙 대신 오른쪽 대각선 아래로 offset */
+    #vr-cursor-icon { position: fixed; z-index: 60; left: 0; top: 0; width: 50px; height: 50px; pointer-events: none; opacity: 0; transition: opacity .15s ease; }
+    #vr-cursor-icon.show { opacity: 1; }
+    #vr-cursor-icon img { width: 100%; height: 100%; object-fit: contain; display: block; filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(255,255,255,.95)); -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(255,255,255,.95)); animation: vr-wobble 1.3s ease-in-out infinite; }
+    @keyframes vr-wobble { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+
+    /* 푸터 아래 무한 스크롤 마퀴 배너 — 트랙을 두 벌 이어붙이고 -50% 이동시켜 이음매 없이 반복 */
+    .marquee-banner { background: var(--accent); overflow: hidden; padding: 26px 0; }
+    .marquee-track { display: flex; width: max-content; animation: marquee-scroll 42s linear infinite; }
+    .marquee-set { display: flex; align-items: center; flex: none; }
+    .marquee-word {
+      font-family: 'Roboto', sans-serif; font-weight: 700; font-style: italic;
+      font-size: clamp(28px, 5vw, 60px); line-height: 1; color: #000;
+      text-transform: uppercase; white-space: nowrap; padding: 0 20px;
+    }
+    .marquee-dot { color: #000; font-size: clamp(20px, 3vw, 36px); opacity: .7; }
+    @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+    /* KAIA CHA 워드마크: C는 평소에 천천히 통통 뛰고, 다른 글자는 예전처럼 한 글자씩 hover 반응 */
+    #wordmark .wm-letter {
+      position: relative; display: inline-block; top: 0; color: #000;
+      transition: top .46s cubic-bezier(.22,1,.36,1), color .2s ease;
+      will-change: top;
+    }
+    #wordmark .wm-c { color: var(--accent); animation: wm-c-bounce 1.65s ease-in-out infinite; }
+    #wordmark .wm-c:hover,
+    #wordmark:has(.wm-rise:hover) .wm-c { top: 0; animation-play-state: paused; }
+    #wordmark .wm-rise:hover { top: -0.22em; color: var(--accent); }
+    @keyframes wm-c-bounce { 0%, 100% { top: 0; } 50% { top: -0.18em; } }
+    #wordmark { flex-wrap: nowrap; justify-content: center !important; gap: .8em; white-space: nowrap; font-family: 'Roboto', sans-serif !important; font-weight: 800 !important; letter-spacing: -0.04em; font-size: clamp(28px, 8vw, 187px) !important; position: relative; z-index: 1; }
+    #wordmark > span { flex: 0 1 auto; min-width: 0; white-space: nowrap; }
+    #home h1 { color: var(--text); }
+    #home h1 .sc-interp {
+      color: #fff;
+      background: linear-gradient(174deg, transparent 0.16em, var(--accent) 0.16em, var(--accent) calc(100% - 0.12em), transparent calc(100% - 0.12em));
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      padding: 0 .08em;
+    }
+    /* 모바일 전용 배경 잔상: Roboto 900(꽉 찬 볼드체)로 빨갛고 크게, blur로 흐릿하게 —
+       아웃라인 폰트(Rock 3D)에 직접 blur를 걸면 속이 빈 곳으로 번져서 지저분해지므로 별도 폰트로 뒤에 깜 */
+    .wm-glow { display: none; }
+
+    /* ── 태블릿(≤1024px): 패딩/그리드를 한 단 줄여서 여유 확보 ── */
+    @media (max-width: 1024px) {
+      main { max-width: 1360px !important; padding-left: 72px !important; padding-right: 72px !important; padding-top: 48px !important; }
+      .home-grid { grid-template-columns: 1fr !important; }
+      .home-widgets { padding-top: 0 !important; }
+      .about-grid { grid-template-columns: 1fr !important; }
+      #about .about-layout { grid-template-columns: 1fr; gap: 32px; }
+      #about .about-sticky-portrait { display: none; }
+      #about .about-scroll-copy { max-height: none; overflow: visible; padding-right: 0; }
+      #about .about-mobile-portrait {
+        display: block; width: 100%; height: 20rem; overflow: hidden;
+        border: 1px solid var(--divider); background: #fff;
+      }
+      #about .about-mobile-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+      #hci .hci-project-row { grid-template-columns: minmax(160px, .65fr) minmax(0, 1.75fr) !important; gap: 32px !important; }
+    }
+
+    /* ── 모바일(≤760px): 한 단 더 압축 + 섹션별 스택/폰트 축소 ── */
+    @media (max-width: 760px) {
+      main { padding-left: 24px !important; padding-right: 24px !important; padding-top: 32px !important; padding-bottom: 80px !important; gap: 72px !important; }
+      section { gap: 24px !important; }
+
+      /* 상단 내비: 4개가 한 줄에 끼면 너무 빡빡해서 두 줄로 */
+      #site-nav { padding: 20px 24px !important; row-gap: 10px !important; }
+
+      /* KAIA CHA 워드마크: space-between이 양 끝으로 벌려놔서 사이가 휑해 보임 —
+         가운데 정렬 + 작은 gap으로 붙이고, 뒤에 Roboto 볼드 빨간 잔상(.wm-glow)을 깔아서 트렌디하게.
+         잔상이 주인공이 되도록 아웃라인 글자 자체는 좀 작게 줄임 */
+      .wm-wrap { margin-top: 40px !important; margin-bottom: 5rem !important; }
+      /* 검정 아웃라인 글자만 살짝 아래로 내려서 빨간 잔상과 층이 지게(깊이감) */
+      #wordmark { justify-content: center !important; gap: 0.35em; font-size: clamp(34px, 11vw, 140px) !important; transform: translateY(-30px); }
+      #wordmark .wm-c {
+        color: #000 !important;
+        animation: none !important;
+        top: 0 !important;
+      }
+      #wordmark .wm-c:hover,
+      #wordmark:has(.wm-rise:hover) .wm-c {
+        color: #000 !important;
+        animation: none !important;
+        top: 0 !important;
+      }
+      .wm-glow {
+        display: flex; position: absolute; inset: 0; z-index: 0;
+        align-items: center; justify-content: center;
+        font-family: 'Roboto', sans-serif; font-weight: 900; letter-spacing: -0.03em;
+        color: #ff0000; font-size: clamp(48px, 15vw, 170px); line-height: 1;
+        white-space: nowrap; filter: blur(4px); text-shadow: 0 0 14px #ff0000; opacity: 1; pointer-events: none;
+      }
+      #home h1 { font-size: clamp(28px, 8vw, 52px) !important; }
+      .home-intro-p { font-size: 14px !important; line-height: 21px !important; }
+      .home-papers { flex-direction: column !important; }
+      section h2 { font-size: 26px !important; }
+
+      /* HCI: 텍스트/이미지 세로 스택 */
+      #hci > div:first-child { flex-wrap: wrap; gap: 8px; }
+      #hci .hci-project-list { gap: 40px !important; }
+      #hci .hci-project-row { grid-template-columns: minmax(0, 1fr) !important; gap: 24px !important; width: 100%; }
+      #hci .hci-project-copy { grid-column: 1; grid-row: 1; width: 100%; }
+      #hci .hci-project-media { grid-column: 1; grid-row: 2; width: 100%; }
+      #hci .hci-project-figure { width: 100%; max-width: 100%; }
+      #hci .hci-project-figure img { width: 100%; max-width: 100%; height: auto; }
+
+      /* UX 카드: 280px 최소폭이 24px 패딩 뺀 좁은 화면(~320-360px)보다 커서 넘침 — 줄임 */
+      .ux-grid { grid-template-columns: 1fr !important; gap: 56px !important; }
+      .ux-grid .ux-project-card { grid-template-columns: 1fr !important; gap: 20px; }
+      .ux-grid .ux-project-media { grid-column: 1; grid-row: 1; }
+      .ux-grid .ux-project-copy { grid-column: 1; grid-row: 2; }
+      .ux-grid .ux-project-copy > span:nth-child(2) { font-size: 24px !important; line-height: 28px !important; }
+
+      /* Field Notes: 헤더에선 컨트롤 숨기고, 카드 레일 아래로 옮김 + 카드 폭을 화면에 맞게 */
+      .notes-header { align-items: flex-start !important; }
+      .notes-controls-desktop { display: none !important; }
+      .notes-controls-mobile { display: flex !important; justify-content: flex-end !important; margin-top: -6px; }
+      .note-card { width: 78vw !important; }
+
+      /* Contact: 줄바꿈될 때 위쪽 정렬이 더 자연스러움 */
+      #contact > div:first-child { align-items: flex-start !important; }
+
+      /* Dock: 아이콘 6개가 좁은 화면에서 넘치지 않게 살짝 축소 */
+      #dock { gap: 3px !important; padding: 7px !important; border-radius: 4px !important; }
+      #dock a { width: 48px !important; border-radius: 2px !important; }
+      #dock span[style*="width:38px"] { width: 30px !important; height: 30px !important; border-radius: 2px !important; }
+    }
+  </style>
+</helmet>
+
+<!-- Menu bar (인트로 #nav와 디자인 통일: Roboto Medium, #000, 반응형 clamp. 호버 빨강 + 링크는 유지) -->
+<div id="site-nav" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:30px clamp(18px, 8.33vw, 120px);font-family:'Roboto', sans-serif;font-weight:500;font-size:clamp(15px, 2.08vw, 30px);line-height:1.1;text-transform:uppercase;background:var(--bg)">
+  <a href="#home" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">Home</a>
+  <a href="#hci" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">HCI</a>
+  <a href="#ux" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">UX</a>
+  <a href="#about" style="color:#000;text-decoration:none" style-hover="color:#FF0000;text-decoration:none">About</a>
+</div>
+
+<main style="max-width:1200px;margin:0 auto;padding:64px 120px 140px;display:flex;flex-direction:column;gap:104px">
+
+  <!-- HOME · KAIA CHA wordmark + hero + widgets -->
+  <section id="home" data-screen-label="Home" style="display:flex;flex-direction:column;gap:var(--space-8)">
+    <div class="wm-wrap" style="position:relative;margin-bottom:7rem">
+      <div class="wm-glow" aria-hidden="true">KAIA CHA</div>
+      <div id="wordmark" style="display:flex;justify-content:space-between;align-items:center;font-family:'Rock 3D', sans-serif;font-weight:400;font-size:clamp(64px, 9.7vw, 187px);line-height:1;white-space:nowrap;text-wrap:pretty">
+        <span>
+          <span class="wm-letter wm-rise">K</span><span class="wm-letter wm-rise">A</span><span class="wm-letter wm-rise">I</span><span class="wm-letter wm-rise">A</span>
+        </span>
+        <span><span class="wm-letter wm-c">C</span><span class="wm-letter wm-rise">H</span><span class="wm-letter wm-rise">A</span></span>
+      </div>
+    </div>
+    <div class="home-grid" style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);gap:var(--space-8) 56px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:16px">
+  
+        <h1 style="font-size:52px;line-height:1.02;margin:0;letter-spacing:-0.78px;white-space:pre-line;text-wrap:pretty;max-width:640px;font-weight:500">{{ headline }}</h1>
+        <p class="home-intro-p" style="font-size:16px;line-height:24px;margin:4px 0 0;color:var(--neutral-700);max-width:500px;text-wrap:pretty">M.S. student in Human Systems Engineering at Arizona State University. I study how target parameters, path geometry and real-time feedback shape motor performance in XR upper-limb rehabilitation, and I build the systems I evaluate.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <span class="tag tag-neutral">XR rehabilitation</span>
+          <span class="tag tag-neutral">Motor performance</span>
+          <span class="tag tag-neutral">Usability evaluation</span>
+          <span class="tag tag-neutral">Unity / C#</span>
+        </div>
+      </div>
+      <div class="home-widgets" style="display:flex;flex-direction:column;gap:12px;padding-top:32px">
+        <div class="blueprint" style="padding:12px 16px;background:var(--neutral-100);display:flex;flex-direction:column;gap:5px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:10.5px;letter-spacing:0.84px;text-transform:uppercase;color:var(--neutral-600)">
+            <span>Now</span>
+            <span style="display:inline-flex;align-items:center;gap:5px"><img src="./assets/portfolio/ellipse.svg" style="width:6px;height:6px" alt="">April 2026 – Present</span>
+          </div>
+          <div style="font-size:14px;line-height:19px">UX Qualitative Researcher</div>
+          <div style="font-size:12.5px;color:var(--neutral-600)">Brand Strategy &amp; Management at ASU</div>
+        </div>
+        <div class="blueprint" style="padding:12px 16px;background:var(--neutral-100);display:flex;flex-direction:column;gap:5px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:10.5px;letter-spacing:0.84px;text-transform:uppercase;color:var(--neutral-600)">
+            <span>Now</span>
+            <span style="display:inline-flex;align-items:center;gap:5px"><img src="./assets/portfolio/ellipse.svg" style="width:6px;height:6px" alt="">Aug 2025 – Present</span>
+          </div>
+          <div style="font-size:14px;line-height:19px">Graduate Student Researcher</div>
+          <div style="font-size:12.5px;color:var(--neutral-600)">Human-in-Mind Engineering Research Lab, ASU</div>
+        </div>
+        <div class="home-papers" style="display:flex;gap:12px">
+          <button onClick="{{ openHfes }}" class="blueprint" style="all:unset;cursor:pointer;box-sizing:border-box;flex:1;min-width:0;padding:12px 16px;background:var(--neutral-100);display:flex;flex-direction:column;gap:5px;text-align:left" style-hover="background:#fff;color:var(--accent)"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <div style="font-size:10.5px;letter-spacing:0.84px;text-transform:uppercase;color:var(--neutral-600)">Latest paper</div>
+            <div style="font-family:'Roboto', sans-serif;font-weight:600;font-size:14px;line-height:22px">HFES ASPIRE 2026</div>
+            <div style="font-size:12px;color:var(--neutral-600)">First author · lecture presentation, Reno NV</div>
+          </button>
+          <button onClick="{{ openIsmar }}" class="blueprint" style="all:unset;cursor:pointer;box-sizing:border-box;flex:1;min-width:0;padding:12px 16px;background:var(--neutral-100);display:flex;flex-direction:column;gap:5px;text-align:left" style-hover="background:#fff;color:var(--accent)"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <div style="font-size:10.5px;letter-spacing:0.84px;text-transform:uppercase;color:var(--neutral-600)">Accepted</div>
+            <div style="font-family:'Roboto', sans-serif;font-weight:600;font-size:14px;line-height:22px">XRehab @ ISMAR 2026</div>
+            <div style="font-size:12px;color:var(--neutral-600)">First author · lecture presentation, Bary, Italy</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HCI · editorial project rows -->
+  <section id="hci" data-screen-label="HCI" style="display:flex;flex-direction:column;gap:var(--space-8)">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--divider);padding-bottom:12px">
+      <h2 style="margin:0;font-size:34px">HCI Research</h2>
+      <span style="font-size:13px;color:var(--neutral-600)">XR rehabilitation · usability · human factors</span>
+    </div>
+    <div class="hci-project-list" style="display:flex;flex-direction:column;gap:56px">
+      <sc-for list="{{ hciProjects }}" as="p" hint-placeholder-count="4">
+        <button class="hci-project-row" onClick="{{ p.open }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,430px);gap:64px;align-items:start;text-align:left">
+          <div class="hci-project-copy" style="display:flex;flex-direction:column;gap:8px;padding-top:8px">
+            <span style="font-size:11px;letter-spacing:1.1px;text-transform:uppercase;color:var(--accent)">{{ p.kicker }}</span>
+            <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:26px;line-height:30px;text-wrap:pretty">{{ p.title }}</span>
+            <span style="font-size:13.5px;color:var(--neutral-600)">{{ p.roleShort }} · {{ p.venue }}</span>
+            <span style="font-size:15px;line-height:22px;color:var(--neutral-800);margin-top:4px;text-wrap:pretty">{{ p.oneLiner }}</span>
+          </div>
+          <div class="hci-project-media" style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+            <sc-if value="{{ p.figureImg }}" hint-placeholder-val="{{ true }}">
+                <figure class="hci-project-figure" style="margin:0;width:100%;border-radius:2px;overflow:hidden;box-shadow:var(--shadow-sm)">
+                <img src="{{ p.figureImg }}" alt="" style="display:block;width:100%;height:auto" />
+              </figure>
+            </sc-if>
+            <sc-if value="{{ !p.figureImg }}" hint-placeholder-val="{{ false }}">
+              <figure class="blueprint duotone" style="margin:0;width:100%;aspect-ratio:16/10;background:var(--neutral-200);box-shadow:var(--shadow-sm)"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div style="width:100%;height:100%;display:grid;place-items:center;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--neutral-600)">{{ p.placeholder }}</div></figure>
+            </sc-if>
+            <span style="display:inline-block;width:max-content;font-size:12.5px;color:var(--accent);border-radius:2px">Open case file >></span>
+          </div>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- UX · card grid -->
+  <section id="ux" data-screen-label="UX" style="display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--divider);padding-bottom:12px">
+      <h2 style="margin:0;font-size:34px">UX &amp; Design Engineering</h2>
+      <div style="display:inline-flex;border:1px solid var(--divider);border-radius:8px;overflow:hidden;font-size:12.5px">
+        <sc-for list="{{ uxTabs }}" as="t" hint-placeholder-count="4">
+          <button onClick="{{ t.select }}" style="all:unset;cursor:pointer;padding:5px 12px;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <p style="margin:0;font-size:14.5px;line-height:21px;color:var(--neutral-700);max-width:560px;text-wrap:pretty">Interface and prototype work outside the lab: role-based systems, data-heavy dashboards and enterprise tools. Design through code — React, JavaScript, HTML, CSS and Figma.</p>
+    <div class="ux-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:64px 16px">
+      <sc-for list="{{ uxItems }}" as="p" hint-placeholder-count="6">
+        <a class="ux-project-card" data-hover-icon="{{ p.hoverIcon }}" href="{{ p.link }}" style="all:unset;cursor:pointer;display:flex;flex-direction:column;gap:12px;text-align:left;color:inherit;text-decoration:none">
+          <div class="ux-project-media">
+          <sc-if value="{{ p.figureImg }}" hint-placeholder-val="{{ true }}">
+            <figure style="margin:0;aspect-ratio:16/9;width:100%;border-radius:2px;overflow:hidden;background:var(--neutral-200);box-shadow:var(--shadow-sm)">
+              <img src="{{ p.figureImg }}" alt="" style="width:100%;height:100%;object-fit:cover" />
+            </figure>
+          </sc-if>
+          <sc-if value="{{ !p.figureImg }}" hint-placeholder-val="{{ false }}">
+            <figure class="blueprint duotone" style="margin:0;aspect-ratio:16/9;width:100%;background:var(--neutral-200);box-shadow:var(--shadow-sm)"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div style="width:100%;height:100%;display:grid;place-items:center;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--neutral-600)">{{ p.placeholder }}</div></figure>
+          </sc-if>
+          </div>
+          <div class="ux-project-copy" style="display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--neutral-600)">{{ p.kicker }}</span>
+            <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:17px;line-height:20px">{{ p.title }}</span>
+            <span style="font-size:12.5px;color:var(--neutral-600)">{{ p.venue }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-sticky-section" data-screen-label="About" style="display:flex;flex-direction:column;gap:var(--space-8)">
+    <div class="about-layout">
+      <aside class="about-sticky-portrait">
+        <img src="./assets/MainPic.jpg" alt="Mikyo Kaia Cha portrait" />
+      </aside>
+      <div class="about-scroll-copy">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--divider);padding-bottom:12px;margin-bottom:32px">
+          <h2 style="margin:0;font-size:34px">About</h2>
+          <span style="font-size:13px;color:var(--neutral-600)">Background · direction</span>
+        </div>
+        <div class="about-mobile-portrait" style="margin-bottom:28px">
+          <img src="./assets/MainPic.jpg" alt="Mikyo Kaia Cha portrait" />
+        </div>
+        <div class="about-grid" style="display:flex;flex-direction:column;gap:48px">
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:280px;flex:1;font-size:15px">
+          <div>
+            <div style="font-family:'Roboto', sans-serif;font-weight:600;font-size:22px">Kaia Mikyo Cha</div>
+            <div style="color:var(--neutral-700);line-height:20px">M.S. Human Systems Engineering · Arizona State University</div>
+          </div>
+          <p style="margin:0;color:var(--neutral-800);line-height:22px;text-wrap:pretty">I study how people use things, and I build the things. That combination is most of what I do: designing an interaction, running the study that tests it, and writing the software in between. I care most about interfaces people lean on when the stakes or the mental load are high, whether that's a rehabilitation task, an operations dashboard, or an enterprise tool nobody has time to learn.</p>
+          <p style="margin:0;color:var(--neutral-800);line-height:22px;text-wrap:pretty">Right now my research is in extended reality and motor performance, with two first-author papers this year at ASPIRE (HFES) and the IEEE ISMAR XRehab workshop. I've also worked as a UX researcher running usability studies and interviews, and earlier on logistics and cloud platform products. I'm wrapping up an M.S. in Human Systems Engineering at ASU, in the HiMER Lab, and I'm open to research and design roles.</p>
+        </div>
+      <div style="display:flex;flex-direction:column;gap:56px">
+        <div class="experience-list" style="display:flex;flex-direction:column;gap:16px">
+          <h6 style="margin:0;color:var(--accent);font-size:14px">Experience</h6>
+          <div style="display:flex;flex-direction:column">
+            <div class="exp-row" style="display:flex;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid var(--divider)">
+              <div class="exp-logo-wrap"><img class="exp-logo-default" src="./assets/ASULogo1.png" alt="" style="object-fit:contain;padding:9px"><img class="exp-logo-hover" src="./assets/ASULogo.png" alt="" style="object-fit:contain;padding:9px"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+                  <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">ASU Enterprise Brand Strategy and Management</span>
+                  <span style="font-size:12px;color:var(--neutral-600)">Tempe, AZ · Apr 2026 – Present</span>
+                </div>
+                <span style="font-size:13px;color:var(--neutral-700)">UX Qualitative Research Aide</span>
+                <ul style="margin:2px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:13px;line-height:19px;color:var(--neutral-800)">
+                  <li>Recruit and screen participants for UX studies for the ASU Brand Team.</li>
+                  <li>Conduct usability studies and in-depth interviews with research participants.</li>
+                  <li>Synthesize qualitative and quantitative findings into research reports for senior leadership.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="exp-row" style="display:flex;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid var(--divider)">
+              <div class="exp-logo-wrap"><img class="exp-logo-default" src="./assets/HiMERLogo.png" alt="" style="object-fit:contain;padding:9px"><img class="exp-logo-hover" src="./assets/portfolio/exp-himer-hover.jpg" alt="" style="object-fit:cover"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+                  <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">Human-in-Mind Ergonomics Research Lab (HIMER)</span>
+                  <span style="font-size:12px;color:var(--neutral-600)">Mesa, AZ · Sep 2025 – Present</span>
+                </div>
+                <span style="font-size:13px;color:var(--neutral-700)">Human Factors Researcher</span>
+                <ul style="margin:2px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:13px;line-height:19px;color:var(--neutral-800)">
+                  <li>Conduct human factors and HCI research on XR-based rehabilitation systems, investigating usability, motor performance, and user-centered design across clinical and non-clinical populations.</li>
+                  <li>Designed and developed a Unity-based VR upper-limb rehabilitation task for Meta Quest Pro, incorporating hand tracking, passthrough rendering, 3D path-following tasks, and real-time kinematic feedback.</li>
+                  <li>Integrated surface EMG sensors with API-based synchronization to capture and align muscle activation signals with task-level kinematic events for multimodal performance assessment.</li>
+                  <li>Designed and executed a repeated-measures usability study examining feedback modality, path geometry, and task difficulty; conducted qualitative thematic analysis of stakeholder interviews to identify user needs and technology adoption barriers.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="exp-row" style="display:flex;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid var(--divider)">
+              <div class="exp-logo-wrap"><img class="exp-logo-default" src="./assets/NGL.png" alt="" style="object-fit:contain;padding:9px"><img class="exp-logo-hover" src="./assets/portfolio/exp-ngl-hover.jpg" alt="" style="object-fit:cover"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+                  <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">NGL Transportation</span>
+                  <span style="font-size:12px;color:var(--neutral-600)">Phoenix, AZ · Jan 2023 – Jan 2024</span>
+                </div>
+                <span style="font-size:13px;color:var(--neutral-700)">IT Intern</span>
+                <ul style="margin:2px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:13px;line-height:19px;color:var(--neutral-800)">
+                  <li>Installed and maintained network &amp; computer systems for logistics operations.</li>
+                  <li>Built front-end features for an internal logistics platform with React.</li>
+                  <li>Authored SOPs and provided tier-two technical support across the organisation.</li>
+                  <li>Led troubleshooting for escalated hardware and software issues.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="exp-row" style="display:flex;gap:14px;align-items:center;padding:16px 0">
+              <div class="exp-logo-wrap"><img class="exp-logo-default" src="./assets/NaverCloud.png" alt="" style="object-fit:contain;padding:9px"><img class="exp-logo-hover" src="./assets/portfolio/exp-naver-hover.jpg" alt="" style="object-fit:cover"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+                  <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">Naver Cloud Platform</span>
+                  <span style="font-size:12px;color:var(--neutral-600)">Seoul, Korea · Jul 2022 – Oct 2022</span>
+                </div>
+                <span style="font-size:13px;color:var(--neutral-700)">Cloud Platform Planning Intern</span>
+                <ul style="margin:2px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:13px;line-height:19px;color:var(--neutral-800)">
+                  <li>Researched competitive API offerings and recommended adoption strategies.</li>
+                  <li>Updated navigation UX/UI for the Naver Cloud Platform marketing site.</li>
+                  <li>Drafted key announcements and release notes for the official website.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:44px;font-size:15px">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <h6 style="margin:0;color:var(--accent);font-size:14px">Research interests</h6>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag tag-neutral">Extended reality for rehabilitation</span><span class="tag tag-neutral">Human–computer interaction</span><span class="tag tag-neutral">Motor performance &amp; training</span><span class="tag tag-neutral">Real-time feedback systems</span><span class="tag tag-neutral">Usability evaluation</span><span class="tag tag-neutral">Cognitive load in immersive environments</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <h6 style="margin:0;color:var(--accent);font-size:14px">Education</h6>
+            <div style="display:flex;flex-direction:column">
+              <div class="exp-row" style="display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--divider)">
+                <div class="exp-logo-wrap"><img class="exp-logo-default" src="./assets/ASULogo1.png" alt="" style="object-fit:contain;padding:9px"><img class="exp-logo-hover" src="./assets/ASULogo.png" alt="" style="object-fit:contain;padding:9px"></div>
+                <div>
+                  <div style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">M.S. Human Systems Engineering</div>
+                  <div style="font-size:13px;color:var(--neutral-600);margin-top:2px">Arizona State University, Mesa AZ · Aug 2025 – May 2027 (expected) · GPA 4.0</div>
+                </div>
+              </div>
+              <div class="exp-row" style="display:flex;gap:14px;align-items:center;padding:14px 0">
+                <div class="exp-logo-wrap"><img class="exp-logo-default" src="./assets/HYULogo1.png" alt="" style="object-fit:contain;padding:9px"><img class="exp-logo-hover" src="./assets/portfolio/edu-hyu-hover.jpg" alt="" style="object-fit:cover"></div>
+                <div>
+                  <div style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">B.S. Media Technology &amp; Computer Science</div>
+                  <div style="font-size:13px;color:var(--neutral-600);margin-top:2px">Hanyang University, Ansan, Korea · Mar 2020 – Aug 2024 · GPA 3.3</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <h6 style="margin:0;color:var(--accent);font-size:14px">Skills</h6>
+            <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 16px">
+              <span style="color:var(--neutral-600)">XR</span><span style="line-height:22px">Unity, C#, Meta Quest, hand tracking, passthrough, motion-based interaction, real-time visual feedback</span>
+              <span style="color:var(--neutral-600)">Methods</span><span style="line-height:22px">Experimental and repeated-measures design, usability testing, user interviews, cognitive load assessment, survey design</span>
+              <span style="color:var(--neutral-600)">Analysis</span><span style="line-height:22px">R, Python, linear mixed-effects modeling, behavioral and kinematic analysis</span>
+              <span style="color:var(--neutral-600)">Front-end</span><span style="line-height:22px">React, JavaScript, HTML, CSS, Figma, Git, Jira, Notion</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <h6 style="margin:0;color:var(--accent);font-size:14px">Tools</h6>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span class="tag tag-neutral" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 7px;font-size:14px"><img src="./assets/FigmaLogo.png" alt="" style="width:15px;height:15px;object-fit:contain">Figma</span>
+              <span class="tag tag-neutral" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 7px;font-size:14px"><img src="./assets/IllustLogo.png" alt="" style="width:15px;height:15px;object-fit:contain">Illustrator</span>
+              <span class="tag tag-neutral" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 7px;font-size:14px"><img src="./assets/VScodeLogo.png" alt="" style="width:15px;height:15px;object-fit:contain">VS Code</span>
+              <span class="tag tag-neutral" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 7px;font-size:14px"><img src="./assets/GithubLogo.png" alt="" style="width:15px;height:15px;object-fit:contain">Git / GitHub</span>
+              <span class="tag tag-neutral" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 7px;font-size:14px"><img src="./assets/JiraLogo.svg" alt="" style="width:15px;height:15px;object-fit:contain">Jira</span>
+              <span class="tag tag-neutral" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 7px;font-size:14px"><img src="./assets/NotionLogo.png" alt="" style="width:15px;height:15px;object-fit:contain">Notion</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <h6 style="margin:0;color:var(--accent);font-size:14px">Ways of working</h6>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag tag-neutral" style="font-size:14px">Balance feasibility and delight</span><span class="tag tag-neutral" style="font-size:14px">Design through co-creation</span><span class="tag tag-neutral" style="font-size:14px">Experiment, then validate</span><span class="tag tag-neutral" style="font-size:14px">Build with heart and craft</span><span class="tag tag-neutral" style="font-size:14px">Aim for clarity and confidence</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <h6 style="margin:0;color:var(--accent);font-size:14px">Awards</h6>
+            <div style="display:flex;flex-direction:column;gap:18px">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
+                  <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">Campus Patent Universiade</span>
+                  <span style="font-size:12.5px;color:var(--neutral-600)">May – Nov 2022</span>
+                </div>
+                <div style="font-size:13px;color:var(--neutral-600);margin-top:2px">KIPO Director's Prize · $7,700</div>
+                <p style="margin:6px 0 0;font-size:14px;line-height:21px;color:var(--neutral-800)">Cloud-based laptop service for education, from concept through business model.</p>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
+                  <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">ETRI Open API Contest</span>
+                  <span style="font-size:12.5px;color:var(--neutral-600)">Sep – Dec 2022</span>
+                </div>
+                <div style="font-size:13px;color:var(--neutral-600);margin-top:2px">Excellence Award · $400</div>
+                <p style="margin:6px 0 0;font-size:14px;line-height:21px;color:var(--neutral-800)">Computer vision assistant that generates indoor tasks with ETRI APIs &amp; YOLO v3.</p>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
+                  <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">Environment Big Data AI Idea Competition</span>
+                  <span style="font-size:12.5px;color:var(--neutral-600)">May – Dec 2022</span>
+                </div>
+                <div style="font-size:13px;color:var(--neutral-600);margin-top:2px">Minister of Environment Award · $2,300</div>
+                <p style="margin:6px 0 0;font-size:14px;line-height:21px;color:var(--neutral-800)">EGG: a big-data powered eco-friendly integration and insights platform.</p>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
+                  <span style="font-family:'Roboto', sans-serif;font-weight:600;font-size:15px;color:var(--text)">Cancer Big Data AI Idea Competition</span>
+                  <span style="font-size:12.5px;color:var(--neutral-600)">Jun – Dec 2021</span>
+                </div>
+                <div style="font-size:13px;color:var(--neutral-600);margin-top:2px">Grand Prize (National Cancer Center) · $1,500</div>
+                <p style="margin:6px 0 0;font-size:14px;line-height:21px;color:var(--neutral-800)">AntiCancer: AI dashboard forecasting cancer care timelines and outcomes.</p>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px">
+              <span style="color:var(--neutral-600)">2021–22</span><span style="line-height:22px">AI &amp; Data Education Volunteer, NAVER, Seoul</span>
+              <span style="color:var(--neutral-600)">2022</span><span style="line-height:22px">International Student Mentoring Volunteer, Hanyang University</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <h6 style="margin:0;color:var(--accent);font-size:14px">Publications</h6>
+            <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;line-height:22px;text-wrap:pretty">
+              <li><strong style="font-weight:500">Cha, M.</strong>, &amp; Jeong, H. (2026). Effects of Target Parameters and Path Geometry on Tracking Performance in an XR Upper-Limb Task for Rehabilitation. Accepted for lecture presentation at <em>ASPIRE: HFES International Annual Meeting</em>, Reno, NV.</li>
+              <li><strong style="font-weight:500">Cha, M.</strong>, &amp; Jeong, H. (2026). Toward a Geometry-Guided and Gamified XR Platform for Adaptive Upper-Limb Rehabilitation. Accepted at the <em>2nd International Workshop on eXtended Reality for Rehabilitation (XRehab 2026)</em>; to appear in the 2026 IEEE ISMAR Adjunct Proceedings.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIELD NOTES · horizontal rail, drag/click to pan -->
+  <section id="field-notes" data-screen-label="Field Notes" style="display:flex;flex-direction:column;gap:24px">
+    <div class="notes-header" style="display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--divider);padding-bottom:12px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span style="font-size:10px;letter-spacing:1.2px;color:var(--neutral-600)">CONFERENCES &amp; NETWORKING</span>
+        <h2 style="margin:0;font-size:34px">Maybe I'm extrovert</h2>
+      </div>
+      <div class="notes-controls notes-controls-desktop" style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:11.5px;color:var(--neutral-600)">Drag to pan</span>
+        <div style="display:flex;gap:6px">
+          <button onClick="{{ panLeft }}" style="all:unset;cursor:pointer;box-sizing:border-box;width:32px;height:32px;border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--neutral-700)" style-hover="background:var(--neutral-100)">←</button>
+          <button onClick="{{ panRight }}" style="all:unset;cursor:pointer;box-sizing:border-box;width:32px;height:32px;border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--neutral-700)" style-hover="background:var(--neutral-100)">→</button>
+        </div>
+      </div>
+    </div>
+    <div id="notes-rail" class="rail" style="display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;scroll-behavior:smooth;cursor:grab">
+      <sc-for list="{{ notes }}" as="n" hint-placeholder-count="8">
+        <div class="note-card" style="background:var(--bg);border:1px solid var(--divider);display:flex;flex-direction:column;padding:12px 12px 0;flex:none;width:300px">
+          <figure style="margin:0;height:207px;width:100%;overflow:hidden"><img src="{{ n.img }}" alt="" draggable="false" style="width:100%;height:100%;object-fit:cover;pointer-events:none" /></figure>
+          <div style="display:flex;flex-direction:column;gap:3px;padding:12px 2px 14px">
+            <span style="font-family:'Roboto', sans-serif;font-weight:500;font-size:15px;line-height:19px">{{ n.title }}</span>
+            <span style="font-size:12px;color:var(--neutral-600)">{{ n.place }}</span>
+          </div>
+          <div style="border-top:1px solid var(--divider);padding:12px 2px 14px">
+            <span style="font-size:12.5px;line-height:18px;color:var(--neutral-700)">{{ n.body }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <!-- 모바일 전용: 데스크톱 헤더 안의 컨트롤을 숨기고 카드 아래에 같은 걸 하나 더 둠(순서만 다름) -->
+    <div class="notes-controls notes-controls-mobile" style="display:none;align-items:center;justify-content:center;gap:12px">
+      <span style="font-size:11.5px;color:var(--neutral-600)">Drag to pan</span>
+      <div style="display:flex;gap:6px">
+        <button onClick="{{ panLeft }}" style="all:unset;cursor:pointer;box-sizing:border-box;width:32px;height:32px;border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--neutral-700)" style-hover="background:var(--neutral-100)">←</button>
+        <button onClick="{{ panRight }}" style="all:unset;cursor:pointer;box-sizing:border-box;width:32px;height:32px;border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--neutral-700)" style-hover="background:var(--neutral-100)">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-screen-label="Contact" style="border-top:1px solid var(--divider);padding-top:var(--space-8);display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h6 style="margin:0;color:var(--neutral-700)">Contact</h6>
+        <a href="mailto:chamikyo@gmail.com?subject=Contact%20Mail" style="font-family:'Roboto', sans-serif;font-weight:600;font-size:26px;color:var(--text)">chamikyo@gmail.com</a>
+        <div style="font-size:13.5px;color:var(--neutral-600)">Tempe, AZ</div>
+      </div>
+      <div style="display:flex;gap:16px;font-size:13.5px;color:var(--text)"><a href="https://www.linkedin.com/in/mikyocha/" target="_blank" rel="noopener">LinkedIn</a><a href="https://drive.google.com/file/d/1U9MMREyBAPwcnWEg8w2uaDvllEjhYtUc/view?usp=sharing" target="_blank" rel="noopener">CV (PDF)</a></div>
+    </div>
+    <div style="font-size:12px;color:var(--neutral-600)">© 2026 Kaia Mikyo Cha · kaiacha.com</div>
+  </section>
+</main>
+
+<!-- 푸터 아래 무한 스크롤 배너 -->
+<div class="marquee-banner" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-set">
+      <span class="marquee-word">Extraordinary</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Remarkable</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Unique</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Extraordinary</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Remarkable</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Unique</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Extraordinary</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Remarkable</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Unique</span><span class="marquee-dot">•</span>
+    </div>
+    <div class="marquee-set">
+      <span class="marquee-word">Extraordinary</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Remarkable</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Unique</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Extraordinary</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Remarkable</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Unique</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Extraordinary</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Remarkable</span><span class="marquee-dot">•</span>
+      <span class="marquee-word">Unique</span><span class="marquee-dot">•</span>
+    </div>
+  </div>
+</div>
+
+<!-- 커서 따라다니는 VR 아이콘 (HCI 프로젝트 행에 호버 시) -->
+<div id="vr-cursor-icon" aria-hidden="true"><img src="./assets/VRheadsetHover.png" alt=""></div>
+
+<!-- Dock -->
+<!-- 애플 글래스(Liquid Glass) 스타일 독 — 기존 대비 전체 1.2배, 코너 더 둥글게 -->
+<nav id="dock" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:8px;padding:10px;background:color-mix(in srgb, var(--neutral-100) 55%, transparent);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.5);border-radius:28px;box-shadow:0 12px 40px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.65), inset 0 0 0 1px rgba(255,255,255,.25)">
+  <sc-for list="{{ dock }}" as="d" hint-placeholder-count="6">
+    <a href="{{ d.href }}" target="{{ d.target }}" rel="{{ d.rel }}" title="{{ d.label }}" style="display:flex;flex-direction:column;align-items:center;gap:4px;width:62px;padding:5px 0;border-radius:16px;color:var(--text);text-decoration:none;transition:transform .18s cubic-bezier(.34,1.56,.64,1)" style-hover="background:rgba(255,255,255,.55);transform:translateY(-3px)">
+      <span style="display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(255,255,255,.6);border-radius:12px;background:{{ d.bg }};color:{{ d.fg }};box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 2px 6px rgba(0,0,0,.06)" dangerouslySetInnerHTML="{{ d.icon }}"></span>
+      <span style="font-size:11px;color:var(--neutral-600)">{{ d.label }}</span>
+    </a>
+  </sc-for>
+</nav>
+
+<!-- Finder / Preview modal -->
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:var(--space-6);background:color-mix(in srgb, var(--color-neutral-900) 45%, transparent);backdrop-filter:blur(4px)">
+    <div onClick="{{ stop }}" role="dialog" aria-modal="true" style="width:min(1000px,100%);max-height:calc(100vh - 48px);display:flex;flex-direction:column;border:1px solid var(--divider);border-radius:var(--radius-lg);background:var(--neutral-100);box-shadow:var(--shadow-lg);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:var(--space-3);height:40px;flex:none;padding:0 var(--space-4);background:var(--neutral-200);border-bottom:1px solid var(--divider)">
+        <div style="display:flex;gap:7px"><button onClick="{{ close }}" title="Close" style="all:unset;cursor:pointer;width:12px;height:12px;border-radius:50%;background:var(--neutral-400);display:block" style-hover="background:var(--accent)"></button><i style="width:12px;height:12px;border-radius:50%;background:var(--color-neutral-300);display:block"></i><i style="width:12px;height:12px;border-radius:50%;background:var(--color-neutral-300);display:block"></i></div>
+        <span style="margin:0 auto;font-size:12.5px;font-weight:500;color:var(--neutral-700)">{{ active.cat }} — {{ active.short }}</span>
+        <span style="width:54px"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(200px,240px) minmax(0,1fr);min-height:0;flex:1">
+        <div style="border-right:1px solid var(--divider);overflow:auto;padding:var(--space-3) 0">
+          <div style="padding:0 var(--space-4) var(--space-2);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--neutral-600)">{{ active.cat }} files</div>
+          <sc-for list="{{ siblings }}" as="s" hint-placeholder-count="3">
+            <button onClick="{{ s.open }}" style="all:unset;cursor:pointer;box-sizing:border-box;width:100%;display:flex;align-items:center;gap:var(--space-2);padding:6px var(--space-4);font-size:13px;background:{{ s.bg }};color:{{ s.fg }}" style-hover="background:var(--neutral-200)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex:none"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5"/></svg>
+              <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.short }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <article style="overflow:auto;padding:var(--space-8) 40px 40px;display:flex;flex-direction:column;gap:var(--space-6)">
+          <sc-if value="{{ active.figureImg }}" hint-placeholder-val="{{ true }}">
+            <figure style="margin:0;aspect-ratio:16/8;border-radius:8px;overflow:hidden;background:var(--neutral-200)"><img src="{{ active.figureImg }}" alt="" style="width:100%;height:100%;object-fit:cover" /></figure>
+          </sc-if>
+          <sc-if value="{{ !active.figureImg }}" hint-placeholder-val="{{ false }}">
+            <figure class="blueprint duotone" style="margin:0;aspect-ratio:16/8;background:var(--neutral-200)"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div style="width:100%;height:100%;display:grid;place-items:center;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--neutral-600)">{{ active.placeholder }}</div></figure>
+          </sc-if>
+          <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap"><sc-for list="{{ active.tags }}" as="t" hint-placeholder-count="3"><span class="tag tag-neutral">{{ t }}</span></sc-for></div>
+            <h3 style="margin:0;font-size:28px;line-height:1.15;text-wrap:pretty">{{ active.title }}</h3>
+            <p style="margin:0;font-size:15px;color:var(--neutral-800);text-wrap:pretty">{{ active.summary }}</p>
+          </div>
+          <dl style="margin:0;display:grid;grid-template-columns:110px minmax(0,1fr);row-gap:var(--space-2);column-gap:var(--space-4);font-size:13.5px;border-top:1px solid var(--divider);padding-top:var(--space-4)">
+            <dt style="color:var(--neutral-600)">Role</dt><dd style="margin:0">{{ active.role }}</dd>
+            <dt style="color:var(--neutral-600)">Method</dt><dd style="margin:0">{{ active.method }}</dd>
+            <dt style="color:var(--neutral-600)">Outcome</dt><dd style="margin:0">{{ active.outcome }}</dd>
+            <dt style="color:var(--neutral-600)">Venue</dt><dd style="margin:0">{{ active.venue }}</dd>
+            <dt style="color:var(--neutral-600)">Year</dt><dd style="margin:0">{{ active.year }}</dd>
+          </dl>
+          <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+            <a href="{{ active.link }}" class="btn btn-primary blueprint" style="color:var(--bg);background:var(--accent);border-color:var(--accent)"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>{{ active.linkLabel }}</a>
+            <button onClick="{{ close }}" class="btn btn-secondary">Close</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;headline&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;statement&quot;,&quot;question&quot;],&quot;default&quot;:&quot;statement&quot;,&quot;tsType&quot;:&quot;'statement' | 'question'&quot;,&quot;section&quot;:&quot;Copy&quot;}}">
+class Component extends DCLogic {
+  state = { openId: null, tab: 'All' };
+  projects = [
+    { id: 'aspire', cat: 'HCI', kicker: 'Experimental study · Publication', short: 'XR Target Parameters & Path Geometry', title: 'Usability Evaluation of Visual Feedback and Task Parameters in XR-Based Upper-Limb Tracking for Rehabilitation', oneLiner: 'A repeated-measures study of how target size, spacing and path geometry change tracking performance in a VR upper-limb rehabilitation task.', summary: 'A Unity-based VR path-following task on Meta Quest Pro, run as a repeated-measures study comparing feedback conditions, path geometries and difficulty parameters. Kinematic performance (tracking error, completion time, score) was analyzed with linear mixed-effects models.', role: 'First author — study design, Unity development, data collection, analysis, presenter', roleShort: 'First author & presenter', method: 'Repeated-measures design; hand tracking and passthrough on Meta Quest Pro; linear mixed-effects models on tracking error, completion time and score', outcome: 'Accepted for lecture presentation at ASPIRE: HFES International Annual Meeting, Reno, NV', venue: 'HFES ASPIRE 2026', year: '2026', tags: ['XR', 'Motor performance', 'Rehabilitation', 'Human factors'], link: '#', linkLabel: 'Read paper', placeholder: 'Study photo or XR screenshot', figureImg: './assets/portfolio/hci-1-participant.png' },
+    { id: 'xrehab', cat: 'HCI', kicker: 'System paper · Workshop', short: 'Geometry-Guided XR Rehab Platform', title: 'Toward a Geometry-Guided and Gamified XR Platform for Adaptive Upper-Limb Rehabilitation', oneLiner: 'A platform concept that adapts upper-limb exercises to each user’s reachable workspace through geometric guidance and game mechanics.', summary: 'A platform concept using geometry-guided target generation and gamified task loops to adapt upper-limb exercises to each user’s reachable workspace, with real-time performance feedback driving difficulty.', role: 'First author — system concept, interaction design, evaluation plan, presenter', roleShort: 'First author & presenter', method: 'Geometry-guided target generation; gamified task loop; adaptive difficulty from tracked motion', outcome: 'Accepted at the 2nd International Workshop on eXtended Reality for Rehabilitation (XRehab 2026); to appear in IEEE ISMAR 2026 Adjunct Proceedings', venue: 'XRehab @ IEEE ISMAR 2026', year: '2026', tags: ['XR', 'Adaptive systems', 'Gamification'], link: '#', linkLabel: 'Read paper', placeholder: 'Platform concept image', figureImg: './assets/portfolio/hci-2-pipeline.png' },
+    { id: 'lifeline', cat: 'UX', sub: 'Design', kicker: 'EMERGENCY UAV SYSTEM', short: 'Lifeline', title: 'Lifeline: emergency medical drone system', oneLiner: '', summary: 'A role-based interface ecosystem for time-critical UAV medical operations, including dashboards and operator workflows, built as a real-time interactive prototype to validate UX feasibility and system behavior.', role: 'Design technologist — interface ecosystem, prototype build', roleShort: 'Design + front-end', method: 'Role-based IA, dashboards and operator workflows; React / JavaScript / HTML / CSS prototype; iteration on interaction patterns and visual hierarchy for high cognitive load', outcome: 'Working interactive prototype validating UX feasibility', venue: 'Arizona State University, Mesa, AZ', year: 'Aug-Dec 2025', tags: ['Dashboards', 'React', 'High-stakes UX'], link: './LifeLine/index.html', linkLabel: 'View case study', placeholder: 'Operator dashboard', figureImg: './assets/portfolio/ux-pilot-dashboard.jpg', hoverIcon: './assets/drone.png' },
+    { id: 'korddiz', cat: 'UX', sub: 'Design', kicker: 'UX & PROTOTYPE CASE STUDY', short: 'Korddiz', title: 'Korddiz: cross-cultural social platform', oneLiner: '', summary: 'Mobile-first user flows addressing trust, safety and language barriers for international users, tested and iterated to reduce onboarding friction.', role: 'UX designer — flows, prototype, usability testing', roleShort: 'UX designer', method: 'Mobile-first flow design, interactive prototype, usability testing and iteration', outcome: 'Reduced onboarding friction across iterations', venue: 'UX & prototype project case study', year: 'Jul-Oct 2023', tags: ['Mobile', 'Trust & safety', 'Onboarding'], link: './koddiz/index.html', linkLabel: 'View case study', placeholder: 'Mobile flow screens', figureImg: './assets/portfolio/ux-koddiz-thumb.jpg', hoverIcon: './assets/chess.png' },
+    { id: 'anticancer', cat: 'UX', sub: 'Data', kicker: 'NATIONAL CANCER CENTER', short: 'Anticancer Dashboard', title: 'Anticancer: cancer treatment visualization dashboard', oneLiner: '', summary: 'A data visualization dashboard translating complex clinical and predictive data into interpretable interfaces, with interactive components supporting comparison, navigation and decision-making for non-technical users.', role: 'Designer and front-end developer', roleShort: 'Design + front-end', method: 'Data visualization design, interactive component build, iterative prototyping and usability evaluation', outcome: 'Grand Prize, Cancer Big Data AI Idea Competition ($1,500)', venue: 'National Cancer Center, Goyang, Korea', year: 'Jun-Dec 2021', tags: ['Data viz', 'Health', 'Dashboard'], link: './anticancer/index.html', linkLabel: 'View case study', placeholder: 'Dashboard screenshot', figureImg: './assets/portfolio/ux-anticancer-dashboard.jpg', hoverIcon: './assets/cancer.png' },
+      ];
+  notesData = [
+    //{ img: './assets/portfolio/note-frame-9.png', title: 'ASPIRE 2026, HFES - Human Factors and Ergonomics Society ', place: 'Rino, NV · Oct 2026', body: 'First author & presenter of Usability Evaluation of Visual Feedback and Task Parameters in XR-Based Upper-Limb Tracking for Rehabilitation' },
+    //{ img: './assets/portfolio/note-frame-8.png', title: 'XRehab26, ISMAR 2026', place: 'Bari, Italy · Oct 2026', body: 'First author & presenter of Toward a Geometry-Guided and Gamified XR Platform for Adaptive Upper-Limb Rehabilitation' },
+    { img: './assets/portfolio/note-frame-0.jpg', title: 'Bio international convention 2026', place: 'San Diego, CA · Jun 2026', body: 'NSF I-Corps customer discovery: 47 interviews with clinicians, investors, and health tech professionals across rehabilitation and digital health.' },
+    { img: './assets/portfolio/note-frame-1.jpg', title: 'Innovation Showcase', place: 'Mesa, AZ · May 2026', body: "Demonstrated an adaptive XR rehabilitation system at ASU's Innovation Showcase, presenting research on geometry-guided motor training and receiving feedback from students" },
+    { img: './assets/portfolio/note-frame-2.jpg', title: 'Officer of Creative Club', place: 'Tempe, AZ · 2025 - 2026', body: 'Organized UX workshops and networking events connecting students with UX designers, researchers, and industry professionals across the ASU community' },
+    { img: './assets/portfolio/note-frame-3.jpg', title: 'Exchange Student Mentor', place: 'Hanyang University, Ansan, Korea · 2024', body: 'Mentored international students through academic advising, campus orientation, and cross-cultural activities to support successful adjustment to university life.' },
+    { img: './assets/portfolio/note-frame-4.jpg', title: 'Vice President of Student Council', place: 'Hanyang University, Ansan, Korea · 2022', body: 'Planned department-wide events, career programs, and student engagement initiatives while coordinating communication between students, faculty, and university administration.' },
+    { img: './assets/portfolio/note-frame-5.jpg', title: 'Campus Patent Universiade', place: 'Google, Korea · 2022', body: "Received the KIPO Director's Prize for proposing a cloud-based education platform through technology landscape analysis, business strategy, and product planning." },
+    { img: './assets/portfolio/note-frame-6.jpg', title: 'AI & Data Education Volunteering', place: 'Naver, Korea · 2021 - 2022', body: 'Led AI and data literacy workshops for elementary/middle school students, designing hands-on educational activities and mentoring learners as a team leader.' },
+    { img: './assets/portfolio/note-frame-7.jpg', title: 'Big Data Utilization Competition', place: 'National Cancer Center, Korea · 2021', body: 'Won the National Grand Prize for developing an AI-powered cancer treatment visualization dashboard that combined predictive analytics with user-centered healthcare design.' },
+  ];
+  componentDidMount() {
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ openId: null }); };
+    window.addEventListener('keydown', this.onKey);
+    const dock = document.getElementById('dock');
+    this.lastScrollY = window.scrollY;
+    this.onScrollDock = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - this.lastScrollY;
+      if (currentScrollY <= 8 || delta < -4) dock?.classList.remove('dock-hidden');
+      else if (delta > 4) dock?.classList.add('dock-hidden');
+      this.lastScrollY = currentScrollY;
+    };
+    window.addEventListener('scroll', this.onScrollDock, { passive: true });
+    // 필드 노트 레일: 드래그로 팬 (버튼 화살표는 renderVals의 panLeft/panRight)
+    const rail = document.getElementById('notes-rail');
+    if (rail) {
+      let down = false, startX = 0, startScroll = 0;
+      this.onDown = e => { down = true; rail.style.cursor = 'grabbing'; startX = e.pageX; startScroll = rail.scrollLeft; };
+      this.onMove = e => { if (!down) return; e.preventDefault(); rail.scrollLeft = startScroll - (e.pageX - startX); };
+      this.onUp = () => { down = false; rail.style.cursor = 'grab'; };
+      rail.addEventListener('mousedown', this.onDown);
+      window.addEventListener('mousemove', this.onMove);
+      window.addEventListener('mouseup', this.onUp);
+    }
+    // HCI(VR)/UX 프로젝트 행에 마우스 올리면 커서를 따라다니는 아이콘 — e.target.closest로
+    // 매번 확인해서 sc-for가 행을 다시 그려도(리렌더) 안 끊기게 함(위치추적+표시를 한 리스너로)
+    // HCI는 고정 VR 헤드셋 이미지, UX는 카드의 data-hover-icon으로 프로젝트별 아이콘 교체
+    const vrIcon = document.getElementById('vr-cursor-icon');
+    const vrIconImg = vrIcon ? vrIcon.querySelector('img') : null;
+    let vrIconSrc = vrIconImg ? vrIconImg.getAttribute('src') : '';
+    this.onMouseMoveVR = (e) => {
+      if (!vrIcon) return;
+      vrIcon.style.left = (e.clientX + 2) + 'px';
+      vrIcon.style.top = (e.clientY + 2) + 'px';
+      const hciRow = e.target.closest && e.target.closest('.hci-project-row');
+      const uxCard = e.target.closest && e.target.closest('.ux-project-card');
+      let nextSrc = '';
+      if (hciRow) nextSrc = './assets/VRheadsetHover.png';
+      else if (uxCard) nextSrc = uxCard.getAttribute('data-hover-icon') || '';
+      if (nextSrc && vrIconImg && nextSrc !== vrIconSrc) { vrIconImg.setAttribute('src', nextSrc); vrIconSrc = nextSrc; }
+      vrIcon.classList.toggle('show', !!(hciRow || uxCard));
+    };
+    window.addEventListener('mousemove', this.onMouseMoveVR);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('scroll', this.onScrollDock);
+    window.removeEventListener('mousemove', this.onMove);
+    window.removeEventListener('mouseup', this.onUp);
+    window.removeEventListener('mousemove', this.onMouseMoveVR);
+  }
+  renderVals() {
+    const { openId, tab } = this.state;
+    const open = id => () => this.setState({ openId: id });
+    const all = this.projects.map(p => ({ ...p, open: open(p.id) }));
+    const hciProjects = all.filter(p => p.cat === 'HCI');
+    const uxItems = all.filter(p => p.cat === 'UX' && (tab === 'All' || p.sub === tab));
+    const uxTabs = ['All', 'Design', 'Data', 'Industry'].map(label => ({ label, select: () => this.setState({ tab: label }), bg: label === tab ? 'var(--neutral-200)' : 'var(--bg)', fg: label === tab ? 'var(--text)' : 'var(--text)' }));
+    const active = all.find(p => p.id === openId) || all[0];
+    const siblings = all.filter(p => p.cat === active.cat).map(p => ({ ...p, bg: p.id === active.id ? 'var(--neutral-200)' : 'transparent', fg: 'var(--text)' }));
+    const ic = d => ({ __html: `<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${d}</svg>` });
+    const dock = [
+      { label: 'Home', href: '#home', icon: ic('<path d="M3 10.5 12 3l9 7.5V21H3z"/>') },
+      { label: 'HCI', href: '#hci', icon: ic('<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/>') },
+      { label: 'UX', href: '#ux', icon: ic('<rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/>') },
+      { label: 'About', href: '#about', icon: ic('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>') },
+      { label: 'Mail', href: 'mailto:chamikyo@gmail.com?subject=Contact%20Mail', icon: ic('<rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/>') },
+      { label: 'CV', href: 'https://drive.google.com/file/d/1U9MMREyBAPwcnWEg8w2uaDvllEjhYtUc/view?usp=sharing', target: '_blank', rel: 'noopener', icon: ic('<path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 13h6M9 17h6"/>') },
+    ].map(d => ({ target: '_self', rel: '', ...d, bg: 'var(--neutral-100)', fg: 'var(--accent-700)' }));
+    const headline = (this.props.headline ?? 'statement') === 'question'
+      ? 'How should XR systems see, guide, and give feedback on the recovering body?'
+      : 'Human factors\n& UX researcher';
+    const railStep = 316; // 카드 폭(300) + gap(16)
+    return { headline, hciProjects, uxItems, uxTabs, dock, modalOpen: !!openId, active, siblings, notes: this.notesData,
+      openHfes: open('aspire'), openIsmar: open('xrehab'), close: () => this.setState({ openId: null }), stop: e => e.stopPropagation(),
+      panLeft: () => { const r = document.getElementById('notes-rail'); if (r) r.scrollBy({ left: -railStep, behavior: 'smooth' }); },
+      panRight: () => { const r = document.getElementById('notes-rail'); if (r) r.scrollBy({ left: railStep, behavior: 'smooth' }); },
+    };
+  }
+}
+</script>
+</body>
+</html>
